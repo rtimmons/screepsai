@@ -1,0 +1,11 @@
+{
+  "name": "screepsai",
+  "version": "1.0.0",
+  "description": "screeps.com strategy",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt check"
+  },
+  "author": "Ryan Timmons",
+  "license": "UNLICENSED"
+}
