@@ -22,4 +22,11 @@ Game.creeps['Upgrader1'].memory.role = 'upgrader';
 
 // turn everybody into harvesters in times of creep shortage
 for (var i in Game.creeps) { Game.creeps[i].memory.role = 'harvester'; }
+
+var n = 0;
+for (var i in Game.creeps) { 
+    if ( Game.creeps[i].memory.role == 'builder' ) { continue; }
+	Game.creeps[i].memory.role = 'builder'; 
+	if (n++ >= 10) { break; }
+}
 ```

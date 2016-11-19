@@ -16,17 +16,17 @@ class RMain {
 
     this.rgame.ensureCreepCount({
       role: 'harvester',
-      atLeast: 4,
+      atLeast: 10,
       bodyParts: [WORK,CARRY,MOVE]
     });
     this.rgame.ensureCreepCount({
       role: 'builder',
-      atLeast: 4,
+      atLeast: 10,
       bodyParts: [WORK,CARRY,MOVE]
     });
     this.rgame.ensureCreepCount({
       role: 'upgrader',
-      atLeast: 4,
+      atLeast: 20,
       bodyParts: [WORK,CARRY,MOVE]
     });
 
