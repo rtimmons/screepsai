@@ -12,8 +12,6 @@ module.exports.loop = function () {
         {role: 'harvester'});
       console.log('Spawning new harvester: ' + newName);
     }
-    // To kill: Game.creeps['Harvester1'].suicide()
-    // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep
 
     // http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#createCreep
 
@@ -25,9 +23,18 @@ module.exports.loop = function () {
         {role: 'builder'});
       console.log('Spawning new builder: ' + newName);
     }
+
+    // https://screeps.com/a/#!/sim/tutorial/4
+    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+    console.log('Upgraders: ' + upgraders.length);
+    if(upgraders.length < 2) {
+      var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined,
+        {role: 'upgrader'});
+      console.log('Spawning new upgrader: ' + newName);
+    }
+
     // To kill: Game.creeps['Harvester1'].suicide()
     // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep
-
 
 
     for(var name in Memory.creeps) {

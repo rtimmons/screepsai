@@ -7,3 +7,16 @@
 ## Links
 
 - https://screeps.com/a/#!/map?pos=65.5,-45.5
+
+## Console Commands
+
+```javascript
+// https://screeps.com/a/#!/sim/tutorial/3
+Game.spawns['Spawn1'].createCreep( [WORK, CARRY, MOVE], 'Builder1',
+    { role: 'builder' } );
+
+Game.spawns['Spawn1'].createCreep( [WORK, CARRY, MOVE], 'Upgrader1' );
+
+Game.creeps['Harvester1'].memory.role = 'harvester';
+Game.creeps['Upgrader1'].memory.role = 'upgrader';
+```
