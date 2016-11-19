@@ -14,6 +14,9 @@ var roleBuilder = {
                 deco.setMode('harvesting');
             }
         }
+        if (deco.modeIs('harvesting') && deco.atEnergyCapcity()) {
+            deco.setMode('constructing');
+        }
 
 
         if(deco.modeIs('constructing')) {
