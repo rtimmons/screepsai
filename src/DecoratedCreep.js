@@ -9,6 +9,9 @@ class DecoratedCreep {
     return this.delegate.memory.mode;
   }
 
+  inspect() {
+    return JSON.stringify(this.delegate.memory);
+  }
   atEnergyCapcity() {
     return this.delegate.carry.energy >= this.delegate.carryCapacity;
   }

@@ -8,6 +8,15 @@
 
 - https://screeps.com/a/#!/map?pos=65.5,-45.5
 
+## Tasks
+
+tasks.todo
+- Convert existing roles to `DecoBuilder` OO model
+- Better prioritize what to spawn
+	- Something to switch roles?
+- Realtime inspection utils
+- Roles just different priorities?
+
 ## Console Commands
 
 ```javascript

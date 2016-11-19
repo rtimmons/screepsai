@@ -23,6 +23,9 @@ var roleHarvester = {
                     creep.moveTo(targets[0]);
                 }
             }
+            else {
+              creep.memory.role = 'builder';
+            }
         }
     }
 };
