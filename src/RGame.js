@@ -11,7 +11,7 @@ class RGame {
 
   // http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#createCreep
   // https://screeps.com/a/#!/sim/tutorial/4
-  
+
   ensureCreepCount(params) {
     var existing = _.filter(Game.creeps, (creep) => creep.memory.role == params.role);
     if(existing.length < params.atLeast) {
