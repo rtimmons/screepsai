@@ -19,4 +19,7 @@ Game.spawns['Spawn1'].createCreep( [WORK, CARRY, MOVE], 'Upgrader1' );
 
 Game.creeps['Harvester1'].memory.role = 'harvester';
 Game.creeps['Upgrader1'].memory.role = 'upgrader';
+
+// turn everybody into harvesters in times of creep shortage
+for (var i in Game.creeps) { Game.creeps[i].memory.role = 'harvester'; }
 ```
