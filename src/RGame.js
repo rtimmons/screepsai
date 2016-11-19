@@ -14,7 +14,7 @@ class RGame {
 
   ensureCreepCount(params) {
     var existing = _.filter(Game.creeps, (creep) => creep.memory.role == params.role);
-    console.log(`Wanted ${params.atLeast} ${params.role}s; have ${existing.length}`);
+    // console.log(`Wanted ${params.atLeast} ${params.role}s; have ${existing.length}`);
     if(existing.length < params.atLeast) {
       var newName = Game.spawns[SPAWN_NAME].createCreep(
         params.bodyParts, 

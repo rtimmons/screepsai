@@ -1,3 +1,4 @@
+// The Screeps API is pretty low-level. This raises it up a notch
 class DecoratedCreep {
   constructor(delegate) {
     this.delegate = delegate;
@@ -9,6 +10,11 @@ class DecoratedCreep {
     return this.delegate.memory.mode;
   }
 
+  moveAndDo(target, action) {
+    if(this.delegate[action](target) == ERR_NOT_IN_RANGE) {
+        this.delegate.moveTo(target);
+    }
+  }
   inspect() {
     return JSON.stringify(this.delegate.memory);
   }
