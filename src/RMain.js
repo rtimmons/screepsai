@@ -21,12 +21,12 @@ class RMain {
     });
     this.rgame.ensureCreepCount({
       role: 'builder',
-      atLeast: 1,
+      atLeast: 4,
       bodyParts: [WORK,CARRY,MOVE]
     });
     this.rgame.ensureCreepCount({
       role: 'upgrader',
-      atLeast: 3,
+      atLeast: 4,
       bodyParts: [WORK,CARRY,MOVE]
     });
 
