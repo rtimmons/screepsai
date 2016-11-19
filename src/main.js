@@ -15,6 +15,21 @@ module.exports.loop = function () {
     // To kill: Game.creeps['Harvester1'].suicide()
     // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep
 
+    // http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#createCreep
+
+    // https://screeps.com/a/#!/sim/tutorial/4
+    var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+    console.log('Builders: ' + builders.length);
+    if(builders.length < 2) {
+      var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined,
+        {role: 'builder'});
+      console.log('Spawning new builder: ' + newName);
+    }
+    // To kill: Game.creeps['Harvester1'].suicide()
+    // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep
+
+
+
     for(var name in Memory.creeps) {
       if(!Game.creeps[name]) {
         delete Memory.creeps[name];
