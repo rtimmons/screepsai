@@ -20,7 +20,6 @@ class RGame {
         undefined,
         {role: params.role}
       );
-      console.log('Created creep %j: %s', params, newName);
     }
   }
 }
