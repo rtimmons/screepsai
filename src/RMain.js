@@ -16,7 +16,7 @@ class RMain {
 
     this.rgame.ensureCreepCount({
       role: 'harvester',
-      atLeast: 3,
+      atLeast: 4,
       bodyParts: [WORK,CARRY,MOVE]
     });
     this.rgame.ensureCreepCount({

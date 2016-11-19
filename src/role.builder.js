@@ -9,7 +9,7 @@ var roleBuilder = {
         }
         if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
             creep.memory.building = true;
-            creep.memorgy.construction = true;
+            creep.memory.construction = true;
             creep.say('building');
         }
 
@@ -19,11 +19,12 @@ var roleBuilder = {
                 if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0]);
                 }
-                return;
+            }
+            else {
+              creep.memory.construction = false;
             }
         }
         else if(creep.memory.building) {
-            creep.memory.construction = false;
             if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller);
             }
