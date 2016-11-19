@@ -6,17 +6,28 @@ class DecoratedCreep {
   role() {
     return this.delegate.memory.role;
   }
+  setRole(role) {
+    this.delegate.memory.role = role;
+  }
   mode() {
     return this.delegate.memory.mode;
   }
 
-  moveAndDo(target, action) {
-    if(this.delegate[action](target) == ERR_NOT_IN_RANGE) {
+  structuresWhere(predicate) {
+    return this.delegate.room.find(FIND_STRUCTURES, predicate);
+  }
+
+  moveAndDo(target, action, otherArgs) {
+    otherArgs = otherArgs || [];
+    if(this.delegate[action](target, ...otherArgs) == ERR_NOT_IN_RANGE) {
         this.delegate.moveTo(target);
     }
   }
   inspect() {
     return JSON.stringify(this.delegate.memory);
+  }
+  hasEnergyCapacity() {
+    return this.delegate.carry.energy < this.delegate.carryCapacity
   }
   atEnergyCapcity() {
     return this.delegate.carry.energy >= this.delegate.carryCapacity;

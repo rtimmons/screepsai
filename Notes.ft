@@ -10,12 +10,19 @@
 
 ## Tasks
 
-tasks.todo
+**tasks**.todo
 - Convert existing roles to `DecoBuilder` OO model
+- Some sort of automated testing?
+- Realtime inspection utils
 - Better prioritize what to spawn
 	- Something to switch roles?
-- Realtime inspection utils
+
+Investigations.todo
+- path finding (store in memory?)
+
+Ideas.todo
 - Roles just different priorities?
+
 
 ## Console Commands
 
