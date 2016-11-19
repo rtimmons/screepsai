@@ -1,0 +1,8 @@
+
+[0m[0m
+[0m  harvester[0m
+  [32m  ✓[0m[90m moves to source if has capacity[0m
+
+
+[92m [0m[32m 1 passing[0m[90m (9ms)[0m
+
