@@ -17,16 +17,16 @@ class RMain {
       atLeast: 5,
       bodyParts: [WORK,CARRY,MOVE]
     });
-    this.rgame.ensureCreepCount({
-      role: 'builder',
-      atLeast: 15,
-      bodyParts: [WORK,CARRY,MOVE]
-    });
-    this.rgame.ensureCreepCount({
-      role: 'upgrader',
-      atLeast: 10,
-      bodyParts: [WORK,CARRY,MOVE]
-    });
+    // this.rgame.ensureCreepCount({
+    //   role: 'builder',
+    //   atLeast: 15,
+    //   bodyParts: [WORK,CARRY,MOVE]
+    // });
+    // this.rgame.ensureCreepCount({
+    //   role: 'upgrader',
+    //   atLeast: 10,
+    //   bodyParts: [WORK,CARRY,MOVE]
+    // });
 
     // To kill: Game.creeps['Harvester1'].suicide()
     // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep

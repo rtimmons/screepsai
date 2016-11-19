@@ -19,11 +19,13 @@ var roleHarvester = {
                 && structure.energy < structure.energyCapacity
             );
             if(targets.length > 0) {
-                deco.moveAndDo(targets[0], 'transfer', RESOURCE_ENERGY);
+                deco.unlessInRnage(targets[0], 
+                    (creep,target) => creep.transfer(target, RESOURCE_ENERGY)
+                );
             }
-            else {
-                deco.setRole('builder');
-            }
+            // else {
+            //     deco.setRole('builder');
+            // }
         }
     }
 };

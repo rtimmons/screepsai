@@ -49,6 +49,14 @@ for (var i in Game.creeps) {
 var n = 0;
 for (var i in Game.creeps) { 
     if ( Game.creeps[i].memory.role == 'harvester' ) { continue; }
+	Game.creeps[i].memory.role = 'harvester'; 
+	if (n++ >= 3) { break; }
+}
+
+
+var n = 0;
+for (var i in Game.creeps) { 
+    if ( Game.creeps[i].memory.role == 'harvester' ) { continue; }
 	Game.creeps[i].memory.role = 'builder'; 
 	if (n++ >= 5) { break; }
 }

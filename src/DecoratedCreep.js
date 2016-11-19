@@ -14,12 +14,18 @@ class DecoratedCreep {
   }
 
   structuresWhere(predicate) {
-    return this.delegate.room.find(FIND_STRUCTURES, predicate);
+    return this.delegate.room.find(FIND_STRUCTURES, {filter: predicate});
   }
 
-  moveAndDo(target, action, otherArgs) {
-    otherArgs = otherArgs || [];
-    if(this.delegate[action](target, ...otherArgs) == ERR_NOT_IN_RANGE) {
+  unlessInRnage(target, onTarget) {
+    var result = onTarget(this.delegate, target);
+    if(result == ERR_NOT_IN_RANGE) {
+      this.delegate.moveTo(target);
+    }
+  }
+
+  moveAndDo(target, action) {
+    if(this.delegate[action](target) == ERR_NOT_IN_RANGE) {
         this.delegate.moveTo(target);
     }
   }
