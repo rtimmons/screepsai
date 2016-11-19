@@ -2,14 +2,12 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 
-var Bus = require('Bus');
 var RGame = require('RGame');
 
 class RMain {
   constructor(params) {
     this.memory = params.memory;
     this.game   = params.game;
-    this.bus    = new Bus();
     this.rgame  = new RGame();
   }
   tick() {
@@ -32,13 +30,6 @@ class RMain {
 
     // To kill: Game.creeps['Harvester1'].suicide()
     // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep
-
-    for(var name in this.memory.creeps) {
-      if(!this.memory.creeps[name]) {
-        delete this.memory.creeps[name];
-        console.log('Clearing non-existing creep memory:', name);
-      }
-    }
 
     // var tower = this.game.getObjectById('TOWER_ID');
     // if(tower) {
