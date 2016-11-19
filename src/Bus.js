@@ -1,5 +1,3 @@
-var _ = require('underscore');
-
 class Bus {
   constructor() {
     this.listeners = {

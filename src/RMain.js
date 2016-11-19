@@ -2,8 +2,8 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 
-var Bus = require('./Bus.js');
-var RGame = require('./RGame.js');
+var Bus = require('Bus');
+var RGame = require('RGame');
 
 class RMain {
   constructor(params) {
@@ -68,3 +68,5 @@ class RMain {
     }
   }
 }
+
+module.exports = RMain;
