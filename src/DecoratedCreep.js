@@ -39,7 +39,7 @@ class DecoratedCreep {
     return this.delegate.carry.energy >= this.delegate.carryCapacity;
   }
   energyDrained() {
-    return this.delegate.carry.energy == 0
+    return this.delegate.carry.energy <= 0
   }
   getMode() {
     return this.delegate.memory.mode;

@@ -1,31 +1,26 @@
 var Deco = require('DecoratedCreep');
 
 var roleUpgrader = {
-
-    /** @param {Creep} creep **/
     run: function(creep) {
-      delete creep.memory.upgrading;
+        var deco = new Deco(creep);
 
-        if(creep.memory.mode == 'upgrading' && creep.carry.energy <= 0) {
-            creep.say('harvesting');
-            creep.memory.mode = 'harvesting';
+        if(deco.modeIs('upgrading') && deco.energyDrained()) {
+            deco.setMode('harvesting');
         }
-        if(creep.memory.mode != 'upgrading' && creep.carry.energy >= creep.carryCapacity) {
-            creep.say('upgrading');
-            creep.memory.mode = 'upgrading';
+        else if(!deco.modeIs('upgrading') && deco.hasEnergyCapacity()) {
+            deco.setMode('upgrading');
         }
 
-        if(creep.memory.mode == 'upgrading') {
-            if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(creep.room.controller);
-            }
+        if (deco.modeIs('upgrading')) {
+            deco.moveAndDo(creep.room.controller, 'upgradeController');
         }
         else {
             var sources = creep.room.find(FIND_SOURCES);
-            // TODO: find closest source
-            if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[1]);
-            }
+            // if(creep.name == 'John') {
+            //     console.log(deco.mode() + ' => ' + deco.energyDrained() + ' => ' + sources[0]);
+            // }
+
+            deco.moveAndDo(sources[0], 'harvest');
         }
     }
 };

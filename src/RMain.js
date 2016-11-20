@@ -42,19 +42,19 @@ TOUGH	10
     */
     this.rgame.ensureCreepCount({
       role: 'harvester',
-      atLeast: 5,
+      atLeast: 3,
       bodyParts: [WORK,CARRY,CARRY,MOVE,MOVE]
     });
     this.rgame.ensureCreepCount({
       role: 'builder',
-      atLeast: 15,
+      atLeast: 4,
       bodyParts: [WORK,WORK,CARRY,MOVE]
     });
-    // this.rgame.ensureCreepCount({
-    //   role: 'upgrader',
-    //   atLeast: 10,
-    //   bodyParts: [WORK,WORK,CARRY,MOVE]
-    // });
+    this.rgame.ensureCreepCount({
+      role: 'upgrader',
+      atLeast: 7,
+      bodyParts: [WORK,WORK,CARRY,MOVE]
+    });
 
     // To kill: Game.creeps['Harvester1'].suicide()
     // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep
