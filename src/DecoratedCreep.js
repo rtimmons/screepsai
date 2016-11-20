@@ -63,6 +63,17 @@ class DecoratedCreep {
     return this.delegate.room.controller;
   }
 
+  bestEnergyDeposit() {
+    var targets = this.structuresWhere((structure) =>
+        (structure.structureType == STRUCTURE_EXTENSION ||
+         structure.structure     == STRUCTURE_CONTROLLER ||
+         structure.structureType == STRUCTURE_SPAWN ||
+         structure.structureType == STRUCTURE_TOWER)
+        && structure.energy < structure.energyCapacity
+    );
+    return targets;
+  }
+
   bestSource() {
     // TODO: some way to find closest source?
     var candidates = this.delegate.room.find(FIND_SOURCES, { filter: s => s.energy > 50 });

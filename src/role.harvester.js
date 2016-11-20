@@ -1,3 +1,5 @@
+var roleBuilder = require('role.builder');
+
 var roleHarvester = {
 
     /** @param {Creep} creep **/
@@ -6,17 +8,13 @@ var roleHarvester = {
         if (deco.hasEnergyCapacity()) {
           deco.moveAndDo(deco.bestSource(), 'harvest');
         } else {
-          var targets = deco.structuresWhere((structure) =>
-              (structure.structureType == STRUCTURE_EXTENSION ||
-               structure.structure     == STRUCTURE_CONTROLLER ||
-               structure.structureType == STRUCTURE_SPAWN ||
-               structure.structureType == STRUCTURE_TOWER)
-              && structure.energy < structure.energyCapacity
-          );
+          var targets = deco.bestEnergyDeposit();
           if (targets.length > 0) {
             deco.unlessInRnage(targets[0],
                 (creep, target) => creep.transfer(target, RESOURCE_ENERGY)
             );
+          } else {
+            roleBuilder.run(deco);
           }
 
           // else {
