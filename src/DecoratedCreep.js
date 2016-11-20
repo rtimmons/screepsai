@@ -87,6 +87,7 @@ class DecoratedCreep {
   harvestFromBestSource() {
     this.deco.moveAndDo(this.bestSource(), 'harvest');
   }
+
   upgradeRoomController() {
     this.moveAndDo(this.delegate.room.controller, 'upgradeController');
   }
@@ -94,6 +95,7 @@ class DecoratedCreep {
   bestConstructionSite() {
     return this.delegate.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
   }
+
   constructionSites() {
     return this.delegate.room.find(FIND_CONSTRUCTION_SITES);
   }
