@@ -7,14 +7,14 @@ module.exports.loop = function () {
 
     var rmain = new RMain({
       game: Game,
-      memory: Memory
+      memory: Memory,
     });
     rmain.tick();
 
-    for(var name in Memory.creeps) {
-      if(!Game.creeps[name]) {
+    for (var name in Memory.creeps) {
+      if (!Game.creeps[name]) {
         delete Memory.creeps[name];
         console.log('Clearing non-existing creep memory:', name);
       }
     }
-}
+  };

@@ -11,8 +11,10 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "grunt": "^1.0.1",
+    "grunt-jscs": "^3.0.1",
     "grunt-mocha-test": "^0.13.2",
     "grunt-screeps": "^1.2.1",
+    "jscs": "^3.0.7",
     "mocha": "^3.1.2"
   }
 }

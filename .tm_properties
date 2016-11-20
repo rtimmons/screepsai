@@ -1,0 +1,7 @@
+# excludeFiles       = "*.{so,pyc,o,scssc,.class}"
+excludeDirectories = "node_modules"
+
+tabSize        = 2
+softTabs       = true
+wrapColumn     = "Use Window Frame"
+sofWrap        = false

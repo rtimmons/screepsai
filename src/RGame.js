@@ -13,20 +13,22 @@ class RGame {
   // https://screeps.com/a/#!/sim/tutorial/4
 
   ensureCreepCount(params) {
-    if ( Game.spawns[SPAWN_NAME].room.energyAvailable < params.whenAvailable ) {
+    if (Game.spawns[SPAWN_NAME].room.energyAvailable < params.whenAvailable) {
       return;
     }
-    whenAvailable: 550
+
+    whenAvailable: 550;
     var existing = _.filter(Game.creeps, (creep) => creep.memory.role == params.role);
+
     // console.log(`Wanted ${params.atLeast} ${params.role}s; have ${existing.length}`);
-    if(existing.length < params.atLeast) {
+    if (existing.length < params.atLeast) {
       var newName = Game.spawns[SPAWN_NAME].createCreep(
-        params.bodyParts, 
+        params.bodyParts,
         undefined,
-        {role: params.role}
+        { role: params.role }
       );
-      if(_.isString(newName)) {
-        console.log('Spawned ' + params.role + ': ' + newName);        
+      if (_.isString(newName)) {
+        console.log('Spawned ' + params.role + ': ' + newName);
       }
     }
   }

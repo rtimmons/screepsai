@@ -1,22 +1,24 @@
 var Deco = require('DecoratedCreep');
 
 module.exports = {
-  extend: function(clz) {
-    clz.creep = function(creepName) {
+  extend: function (clz) {
+    clz.creep = function (creepName) {
       return new Deco(Game.creeps[creepName]);
     };
-    clz.report = function() {
+
+    clz.report = function () {
       var report = [];
-      for(var k in Game.creeps) {
+      for (var k in Game.creeps) {
         var c = Game.creeps[k];
         report.push(JSON.stringify({
-          role: c.memory.role, mode: c.memory.mode, 
-          body: c.body.map(b => b.type.substring(0,1)).sort().join(''),
+          role: c.memory.role, mode: c.memory.mode,
+          body: c.body.map(b => b.type.substring(0, 1)).sort().join(''),
           ttl: c.ticksToLive,
-          name: c.name
+          name: c.name,
         }));
       }
-      console.log(report.join("\n"));
+
+      console.log(report.join('\n'));
     };
-  }
+  },
 };

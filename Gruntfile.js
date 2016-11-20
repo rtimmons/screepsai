@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-screeps');
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks("grunt-jscs");
 
   grunt.initConfig({
     screeps: {
@@ -28,6 +29,15 @@ module.exports = function(grunt) {
         src: ['tst/spec/*.js']
       }
     },
+    jscs: {
+        src: "src/*.js",
+        options: {
+            config: ".jscsrc",
+
+            // Autofix code style violations when possible.
+            fix: true, 
+        }
+    }
   });
 
   grunt.registerTask('default', 'mochaTest');
