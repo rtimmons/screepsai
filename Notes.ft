@@ -12,10 +12,19 @@
 
 **tasks**.todo
 - Convert existing roles to `DecoBuilder` OO model
+- Prioritize things based on [`Room.energyAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyAvailable).
 - Some sort of automated testing?
+- Change `bodyType` based on room energy
 - Realtime inspection utils
 - Better prioritize what to spawn
 	- Something to switch roles?
+
+
+```javascript
+Game.spawns['Spawn1'].createCreep( [WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE],
+    'HarvesterBig',
+    { role: 'harvester' } );
+```
 
 Investigations.todo
 - path finding (store in memory?)
