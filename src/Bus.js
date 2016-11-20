@@ -1,3 +1,7 @@
+if ( typeof _ === 'undefined' ) {
+  var _ = require('underscore');
+}
+
 class Bus {
   constructor() {
     this.listeners = {

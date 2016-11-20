@@ -1,6 +1,7 @@
 var assert = require('assert');
 var chai = require('chai');
 var expect = chai.expect;
+var _ = require('underscore');
 
 var Bus = require('../../src/Bus.js');
 
