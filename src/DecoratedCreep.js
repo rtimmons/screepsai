@@ -4,6 +4,16 @@ class DecoratedCreep {
     this.delegate = delegate;
   }
 
+  tick(time) {
+    if (this.delegate.ticksToLive <= 1) {
+      this._clearTarget();
+    }
+    // re-compute targets
+    if (time % 25 == 0) {
+      this._clearTarget();
+    }
+  }
+
   role() {
     return this.delegate.memory.role;
   }
@@ -30,8 +40,28 @@ class DecoratedCreep {
     return this.getMode() == mode;
   }
 
+  _targetingId(id) {
+    Memory.targeting = Memory.targeting || {};
+    Memory.targeting[id] = Memory.targeting[id] || {};
+    return Memory.targeting[id];
+  }
+
   _clearTarget() {
-    delete this.delegate.memory.target;
+    var targetId = this.delegate.memory.targetId;
+    var targeting = this._targetingId(targetId);
+
+    delete targeting[this.delegate.id];
+    if (_.size(Memory.targeting[targetId]) == 0) {
+      delete Memory.targeting[targetId];
+    }
+
+    delete this.delegate.memory.targetId;
+  }
+  setTarget(target) {
+    this._clearTarget();
+    this.delegate.memory.targetId = target.id;
+    
+    this._targetingId(target.id)[this.delegate.id] = 1;
   }
 
   structuresWhere(predicate) {
@@ -45,12 +75,14 @@ class DecoratedCreep {
   unlessInRnage(target, onTarget) {
     var result = onTarget(this.delegate, target);
     if (result == ERR_NOT_IN_RANGE) {
+      this.setTarget(target);
       this.delegate.moveTo(target);
     }
   }
 
   moveAndDo(target, action) {
     if (this.delegate[action](target) == ERR_NOT_IN_RANGE) {
+      this.setTarget(target);
       this.delegate.moveTo(target);
     }
   }
@@ -74,14 +106,31 @@ class DecoratedCreep {
          structure.structureType == STRUCTURE_SPAWN ||
          structure.structureType == STRUCTURE_TOWER)
         && structure.energy < structure.energyCapacity
+        && _.size(this._targetingId(structure.id)) <= 3
     );
+    if (!target) {
+      target = this.closestStructureWhere((structure) =>
+        (structure.structureType == STRUCTURE_EXTENSION ||
+         structure.structure     == STRUCTURE_CONTROLLER ||
+         structure.structureType == STRUCTURE_SPAWN ||
+         structure.structureType == STRUCTURE_TOWER)
+        && structure.energy < structure.energyCapacity
+      );
+    }
     return target;
   }
 
   bestSource() {
-    var target = this.delegate.pos.findClosestByPath(FIND_SOURCES,
+    var target = this.delegate.pos.findClosestByPath(
+      FIND_SOURCES, 
+      { filter: s => s.energy > 50 && _.size(this._targetingId(s.id)) <= 3 }
+    );
+
+    if (target) { return target; }
+    
+    var orElse = this.delegate.pos.findClosestByPath(FIND_SOURCES,
       { filter: s => s.energy > 50 });
-    return target;
+    return orElse;
   }
 
   harvestFromBestSource() {

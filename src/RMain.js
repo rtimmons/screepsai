@@ -121,6 +121,8 @@ TOUGH	10
     for (var name in this.game.creeps) {
       var creep = this.game.creeps[name];
       var deco = new DecoratedCreep(creep);
+      deco.tick(Game.time);
+
       if (creep.memory.role == 'harvester') {
         roleHarvester.run(deco);
       }

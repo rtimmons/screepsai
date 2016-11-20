@@ -5,7 +5,9 @@ var roleHarvester = {
     /** @param {Creep} creep **/
     run: function (deco) {
 
+        // fill up
         if (deco.hasEnergyCapacity()) {
+          deco.setMode('harvesting');
           deco.moveAndDo(deco.bestSource(), 'harvest');
         } else {
           var target = deco.bestEnergyDeposit();
@@ -16,10 +18,6 @@ var roleHarvester = {
           } else {
             roleBuilder.run(deco);
           }
-
-          // else {
-          //     deco.setRole('builder');
-          // }
         }
       },
   };
