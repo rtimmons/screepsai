@@ -48,7 +48,7 @@ TOUGH	10
     // CARRY = 50
     this.rgame.ensureCreepCount({
       role: 'harvester',
-      atLeast: 3,
+      atLeast: 10,
       whenAvailable: 550,
       bodyParts: [
         // When papa's getting paid
@@ -78,22 +78,22 @@ TOUGH	10
     //     MOVE
     //   ]
     // });
-    this.rgame.ensureCreepCount({
-      role: 'upgrader',
-      atLeast: 5,
-      whenAvailable: 550,
-      bodyParts: [
-        WORK,
-        WORK,
-        WORK,
-        MOVE, MOVE, MOVE,
-        CARRY,CARRY,
-
-        // WORK,
-        // MOVE,
-        // CARRY,
-      ]
-    });
+    // this.rgame.ensureCreepCount({
+    //   role: 'upgrader',
+    //   atLeast: 5,
+    //   whenAvailable: 550,
+    //   bodyParts: [
+    //     WORK,
+    //     WORK,
+    //     WORK,
+    //     MOVE, MOVE, MOVE,
+    //     CARRY,CARRY,
+    //
+    //     // WORK,
+    //     // MOVE,
+    //     // CARRY,
+    //   ]
+    // });
 
     // To kill: Game.creeps['Harvester1'].suicide()
     // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep

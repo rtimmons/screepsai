@@ -8,6 +8,7 @@ class DecoratedCreep {
     return this.delegate.memory.role;
   }
   setRole(role) {
+    this._clearTarget();
     this.delegate.memory.role = role;
   }
   mode() {
@@ -17,10 +18,15 @@ class DecoratedCreep {
     return this.delegate.memory.mode;
   }
   setMode(mode) {
+    this._clearTarget();
     this.delegate.memory.mode = mode;
   }
   modeIs(mode) {
-    return this.delegate.memory.mode == mode;
+    return this.getMode() == mode;
+  }
+
+  _clearTarget() {
+    delete this.delegate.memory.target;
   }
 
   structuresWhere(predicate) {
