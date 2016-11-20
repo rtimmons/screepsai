@@ -40,20 +40,46 @@ TOUGH	10
     No effect, just additional hit points to the creep's body. Can be boosted to resist damage.
 
     */
+    // 2016-11-19: have 500 capacity
+
     this.rgame.ensureCreepCount({
       role: 'harvester',
-      atLeast: 3,
-      bodyParts: [WORK,CARRY,CARRY,MOVE,MOVE]
+      atLeast: 2,
+      whenAvailable: 550,
+      bodyParts: [
+        WORK,
+        WORK,
+        MOVE,MOVE,
+        CARRY,CARRY,
+        CARRY,CARRY,
+        CARRY,
+      ]
     });
     this.rgame.ensureCreepCount({
       role: 'builder',
-      atLeast: 4,
-      bodyParts: [WORK,WORK,CARRY,MOVE]
+      atLeast: 3,
+      whenAvailable: 550,
+      bodyParts: [
+        WORK,
+        WORK,
+        WORK,
+        WORK,
+        CARRY,CARRY,
+        MOVE
+      ]
     });
     this.rgame.ensureCreepCount({
       role: 'upgrader',
-      atLeast: 7,
-      bodyParts: [WORK,WORK,CARRY,MOVE]
+      atLeast: 10,
+      whenAvailable: 550,
+      bodyParts: [
+        WORK,
+        WORK,
+        WORK,
+        MOVE, MOVE,
+        CARRY,CARRY,
+        CARRY,
+      ]
     });
 
     // To kill: Game.creeps['Harvester1'].suicide()

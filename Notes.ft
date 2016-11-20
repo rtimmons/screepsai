@@ -12,7 +12,11 @@
 
 **tasks**.todo
 - Convert existing roles to `DecoBuilder` OO model
-- Prioritize things based on [`Room.energyAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyAvailable).
+- Give creep names indicating role, body, and instance#
+- Prioritize things based on [`Room.energyAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyAvailable) and [`energyCapacityAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyCapacityAvailable).
+- Automatically create roads from source to spawn and RommController
+- Prioritize delivering energy to spawns over construction
+- Any way to avoid losing energy when transferring a full creep to a spawn with only 1 capacity?
 - Some sort of automated testing?
 - Change `bodyType` based on room energy
 - Realtime inspection utils
@@ -34,6 +38,22 @@ Ideas.todo
 
 
 ## Console Commands
+
+```javascript
+Game.spawns['Spawn1'].createCreep(
+        [
+        WORK,
+        WORK,
+        WORK,
+        CARRY,CARRY,
+        CARRY, MOVE,
+        MOVE
+      ], 
+        undefined,
+        {role: 'upgrader'}
+      );
+```
+
 
 ```javascript
 // https://screeps.com/a/#!/sim/tutorial/3
@@ -59,7 +79,7 @@ var n = 0;
 for (var i in Game.creeps) { 
     if ( Game.creeps[i].memory.role == 'harvester' ) { continue; }
 	Game.creeps[i].memory.role = 'harvester'; 
-	if (n++ >= 3) { break; }
+	if (n++ >= 2) { break; }
 }
 
 
