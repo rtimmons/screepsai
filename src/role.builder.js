@@ -16,16 +16,16 @@ var roleBuilder = {
         }
 
         if (deco.modeIs('constructing')) {
-          var targets = deco.constructionSites();
-          if (targets.length) {
-            deco.moveAndDo(targets[0], 'build');
+          var target = deco.bestConstructionSite();
+          if(target) {
+            deco.moveAndDo(targets, 'build');
           } else {
             deco.setMode('building');
           }
         } else if (deco.modeIs('harvesting')) {
-          deco.moveAndDo(deco.bestSource(), 'harvest');
+          deco.harvestFromBestSource();
         } else if (deco.modeIs('building')) {
-          deco.moveAndDo(creep.room.controller, 'upgradeController');
+          deco.upgradeRoomController();
         } else { deco.setMode('harvesting'); }
       },
   };
