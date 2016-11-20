@@ -51,11 +51,18 @@ TOUGH	10
       atLeast: 3,
       whenAvailable: 550,
       bodyParts: [
+        // When papa's getting paid
         WORK,
         WORK,
-        MOVE,  MOVE,
+        WORK,
+        MOVE,
         CARRY, CARRY,
         CARRY, CARRY,
+
+        // when we ain't got nothin to eat
+        // WORK,
+        // MOVE,
+        // CARRY,
       ]
     });
     // this.rgame.ensureCreepCount({
@@ -73,14 +80,18 @@ TOUGH	10
     // });
     this.rgame.ensureCreepCount({
       role: 'upgrader',
-      atLeast: 10,
+      atLeast: 5,
       whenAvailable: 550,
       bodyParts: [
         WORK,
         WORK,
         WORK,
-        MOVE, MOVE,
+        MOVE, MOVE, MOVE,
         CARRY,CARRY,
+
+        // WORK,
+        // MOVE,
+        // CARRY,
       ]
     });
 

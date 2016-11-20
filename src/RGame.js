@@ -25,7 +25,9 @@ class RGame {
         undefined,
         {role: params.role}
       );
-      console.log('Spawned ' + params.role + ': ' + newName);
+      if(_.isString(newName)) {
+        console.log('Spawned ' + params.role + ': ' + newName);        
+      }
     }
   }
 }

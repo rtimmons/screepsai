@@ -22,7 +22,7 @@
 - Realtime inspection utils
 - Better prioritize what to spawn
 	- Something to switch roles?
-
+- When first setting up room, cache the 'best' sources
 
 ```javascript
 Game.spawns['Spawn1'].createCreep( [WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE],
@@ -44,10 +44,7 @@ Ideas.todo
 Game.spawns['Spawn1'].createCreep(
 [
         WORK,
-        WORK,
-        MOVE,MOVE,
-        CARRY,CARRY,
-        CARRY,CARRY,
+        MOVE,
         CARRY,
       ], 
         undefined,

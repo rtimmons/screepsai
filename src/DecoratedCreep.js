@@ -3,6 +3,7 @@ class DecoratedCreep {
   constructor(delegate) {
     this.delegate = delegate;
   }
+
   role() {
     return this.delegate.memory.role;
   }
@@ -11,6 +12,15 @@ class DecoratedCreep {
   }
   mode() {
     return this.delegate.memory.mode;
+  }
+  getMode() {
+    return this.delegate.memory.mode;
+  }
+  setMode(mode) {
+    this.delegate.memory.mode = mode;
+  }
+  modeIs(mode) {
+    return this.delegate.memory.mode == mode;
   }
 
   structuresWhere(predicate) {
@@ -42,8 +52,8 @@ class DecoratedCreep {
     // TODO: some way to find closest source?
     var candidates = this.delegate.room.find(FIND_SOURCES,{filter: s => s.energy > 50});
     var byId = _.sortBy(candidates, a => a.id)
-    var out = byId.sort( (a,b) => a.energy - b.energy - 1000);
-    return out[0];
+    var out = byId.sort( (a,b) => a.energy - b.energy/100);
+    return out[1];
   }
   constructionSites() {
     return this.delegate.room.find(FIND_CONSTRUCTION_SITES)
@@ -54,15 +64,7 @@ class DecoratedCreep {
   energyDrained() {
     return this.delegate.carry.energy <= 0
   }
-  getMode() {
-    return this.delegate.memory.mode;
-  }
-  setMode(mode) {
-    this.delegate.memory.mode = mode;
-  }
-  modeIs(mode) {
-    return this.delegate.memory.mode == mode;
-  }
+
 }
 
 module.exports = DecoratedCreep;
