@@ -7,10 +7,7 @@ var roleHarvester = {
         var deco = new Deco(creep);
 
         if(deco.hasEnergyCapacity()) {
-            var sources = creep.room.find(FIND_SOURCES,{filter: s => s.energy > 50}).sort(
-                (a,b) => b.energy - a.energy
-            )
-            deco.moveAndDo(sources[0], 'harvest');
+            deco.moveAndDo(deco.bestSource(), 'harvest');
         }
         else {
             var targets = deco.structuresWhere((structure) => 

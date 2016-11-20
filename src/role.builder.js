@@ -29,11 +29,7 @@ var roleBuilder = {
         }
 
         else if (deco.modeIs('harvesting')) {
-            // TODO: some way to find closest source?
-            var sources = creep.room.find(FIND_SOURCES,{filter: s => s.energy > 50}).sort(
-              (a,b) => b.energy - a.energy
-            )
-            deco.moveAndDo(sources[1], 'harvest');
+            deco.moveAndDo(deco.bestSource(), 'harvest');
         }
 
         else if (deco.modeIs('building')) {
