@@ -6,8 +6,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
     screeps: {
       options: {
-        email: grunt.file.read('./secret-email.txt'),
-        password: grunt.file.read('./secret-password.txt'),
+        email: grunt.file.read('./secret-email.txt').trim(),
+        password: grunt.file.read('./secret-password.txt').trim(),
         branch: 'default',
         ptr: false
       },
