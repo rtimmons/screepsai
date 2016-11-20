@@ -8,10 +8,10 @@ var roleHarvester = {
         if (deco.hasEnergyCapacity()) {
           deco.moveAndDo(deco.bestSource(), 'harvest');
         } else {
-          var targets = deco.bestEnergyDeposit();
-          if (targets.length > 0) {
-            deco.unlessInRnage(targets[0],
-                (creep, target) => creep.transfer(target, RESOURCE_ENERGY)
+          var target = deco.bestEnergyDeposit();
+          if (target) {
+            deco.unlessInRnage(target,
+              (creep, target) => creep.transfer(target, RESOURCE_ENERGY)
             );
           } else {
             roleBuilder.run(deco);

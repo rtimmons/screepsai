@@ -38,6 +38,10 @@ class DecoratedCreep {
     return this.delegate.room.find(FIND_STRUCTURES, { filter: predicate });
   }
 
+  closestStructureWhere(predicate) {
+    return this.delegate.pos.findClosestByPath(FIND_STRUCTURES, { filter: predicate });
+  }
+
   unlessInRnage(target, onTarget) {
     var result = onTarget(this.delegate, target);
     if (result == ERR_NOT_IN_RANGE) {
@@ -64,22 +68,20 @@ class DecoratedCreep {
   }
 
   bestEnergyDeposit() {
-    var targets = this.structuresWhere((structure) =>
+    var target = this.closestStructureWhere((structure) =>
         (structure.structureType == STRUCTURE_EXTENSION ||
          structure.structure     == STRUCTURE_CONTROLLER ||
          structure.structureType == STRUCTURE_SPAWN ||
          structure.structureType == STRUCTURE_TOWER)
         && structure.energy < structure.energyCapacity
     );
-    return targets;
+    return target;
   }
 
   bestSource() {
-    // TODO: some way to find closest source?
-    var candidates = this.delegate.room.find(FIND_SOURCES, { filter: s => s.energy > 50 });
-    var byId = _.sortBy(candidates, a => a.id);
-    var out = byId.sort((a, b) => a.energy - b.energy / 100);
-    return out[1];
+    var target = this.delegate.pos.findClosestByPath(FIND_SOURCES,
+      { filter: s => s.energy > 50 });
+    return target;
   }
 
   constructionSites() {
