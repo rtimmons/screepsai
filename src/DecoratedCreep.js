@@ -35,12 +35,18 @@ class DecoratedCreep {
   hasEnergyCapacity() {
     return this.delegate.carry.energy < this.delegate.carryCapacity
   }
+  currentRoomController() {
+    return this.delegate.room.controller;
+  }
   bestSource() {
     // TODO: some way to find closest source?
     var candidates = this.delegate.room.find(FIND_SOURCES,{filter: s => s.energy > 50});
     var byId = _.sortBy(candidates, a => a.id)
-    var out = byId.sort( (a,b) => a.energy - b.energy + 1000);
+    var out = byId.sort( (a,b) => a.energy - b.energy - 1000);
     return out[0];
+  }
+  constructionSites() {
+    return this.delegate.room.find(FIND_CONSTRUCTION_SITES)
   }
   atEnergyCapcity() {
     return this.delegate.carry.energy >= this.delegate.carryCapacity;

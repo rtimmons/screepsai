@@ -1,10 +1,7 @@
-var Deco = require('DecoratedCreep');
-
 var roleHarvester = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
-        var deco = new Deco(creep);
+    run: function(deco) {
 
         if(deco.hasEnergyCapacity()) {
             deco.moveAndDo(deco.bestSource(), 'harvest');

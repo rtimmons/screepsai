@@ -32,6 +32,7 @@ Game.spawns['Spawn1'].createCreep( [WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE],
 
 Investigations.todo
 - path finding (store in memory?)
+- FSM for given role & state => action
 
 Ideas.todo
 - Roles just different priorities?
@@ -41,16 +42,16 @@ Ideas.todo
 
 ```javascript
 Game.spawns['Spawn1'].createCreep(
-        [
+[
         WORK,
         WORK,
-        WORK,
+        MOVE,MOVE,
         CARRY,CARRY,
-        CARRY, MOVE,
-        MOVE
+        CARRY,CARRY,
+        CARRY,
       ], 
         undefined,
-        {role: 'upgrader'}
+        {role: 'harvester'}
       );
 ```
 
@@ -60,6 +61,9 @@ Game.spawns['Spawn1'].createCreep(
 Game.spawns['Spawn1'].createCreep( [WORK, CARRY, MOVE], 'Builder1',
     { role: 'builder' } );
 
+Game.spawns['Spawn1'].createCreep( [WORK, CARRY, MOVE], undefined,
+    { role: 'harvester' } );
+
 Game.spawns['Spawn1'].createCreep( [WORK, CARRY, MOVE], 'Upgrader1' );
 
 Game.creeps['Harvester1'].memory.role = 'harvester';
@@ -67,6 +71,7 @@ Game.creeps['Upgrader1'].memory.role = 'upgrader';
 
 // turn everybody into harvesters in times of creep shortage
 for (var i in Game.creeps) { Game.creeps[i].memory.role = 'harvester'; }
+
 
 var n = 0;
 for (var i in Game.creeps) { 
@@ -91,9 +96,9 @@ for (var i in Game.creeps) {
 }
 var n = 0;
 for (var i in Game.creeps) { 
-    if ( Game.creeps[i].memory.role == 'harvester' || Game.creeps[i].memory.role != 'builder' ) { continue; }
+    if ( Game.creeps[i].memory.role == 'harvester' || Game.creeps[i].memory.role != 'upgrader' ) { continue; }
 	Game.creeps[i].memory.role = 'harvester'; 
-	if (n++ >= 5) { break; }
+	if (n++ >= 2) { break; }
 }
 
 

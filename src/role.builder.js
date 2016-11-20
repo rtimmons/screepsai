@@ -1,10 +1,7 @@
-var Deco = require('DecoratedCreep');
-
 var roleBuilder = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
-        var deco = new Deco(creep);
+    run: function(deco) {
 
         if (deco.energyDrained()) {
             deco.setMode('harvesting');
@@ -19,7 +16,7 @@ var roleBuilder = {
         }
 
         if(deco.modeIs('constructing')) {
-            var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+            var targets = deco.constructionSites();
             if(targets.length) {
                 deco.moveAndDo(targets[0], 'build')
             }

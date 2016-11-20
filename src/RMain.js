@@ -2,6 +2,7 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 
+var DecoratedCreep = require('DecoratedCreep');
 var RGame = require('RGame');
 
 class RMain {
@@ -42,32 +43,34 @@ TOUGH	10
     */
     // 2016-11-19: have 500 capacity
 
+    // WORK = 100
+    // MOVE = 50
+    // CARRY = 50
     this.rgame.ensureCreepCount({
       role: 'harvester',
-      atLeast: 2,
-      whenAvailable: 550,
-      bodyParts: [
-        WORK,
-        WORK,
-        MOVE,MOVE,
-        CARRY,CARRY,
-        CARRY,CARRY,
-        CARRY,
-      ]
-    });
-    this.rgame.ensureCreepCount({
-      role: 'builder',
       atLeast: 3,
       whenAvailable: 550,
       bodyParts: [
         WORK,
         WORK,
-        WORK,
-        WORK,
-        CARRY,CARRY,
-        MOVE
+        MOVE,  MOVE,
+        CARRY, CARRY,
+        CARRY, CARRY,
       ]
     });
+    // this.rgame.ensureCreepCount({
+    //   role: 'builder',
+    //   atLeast: 3,
+    //   whenAvailable: 550,
+    //   bodyParts: [
+    //     WORK,
+    //     WORK,
+    //     WORK,
+    //     WORK,
+    //     CARRY,CARRY,
+    //     MOVE
+    //   ]
+    // });
     this.rgame.ensureCreepCount({
       role: 'upgrader',
       atLeast: 10,
@@ -78,7 +81,6 @@ TOUGH	10
         WORK,
         MOVE, MOVE,
         CARRY,CARRY,
-        CARRY,
       ]
     });
 
@@ -101,14 +103,15 @@ TOUGH	10
 
     for(var name in this.game.creeps) {
         var creep = this.game.creeps[name];
+        var deco = new DecoratedCreep(creep);
         if(creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
+            roleHarvester.run(deco);
         }
         if(creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
+            roleUpgrader.run(deco);
         }
         if(creep.memory.role == 'builder') {
-            roleBuilder.run(creep);
+            roleBuilder.run(deco);
         }
     }
   }
