@@ -4,6 +4,12 @@ class DecoratedCreep {
     this.delegate = delegate;
   }
 
+  setRoleMode(role,mode) {
+    this.setRole(role);
+    this.setMode(mode);
+    this.delegate.say(`${role}/${mode}`);
+  }
+
   ttl() {
     return this.delegate.ticksToLive;
   }
@@ -159,13 +165,13 @@ class DecoratedCreep {
   bestSource() {
     var target = this.delegate.pos.findClosestByPath(
       FIND_SOURCES,
-      { filter: s => s.energy > 50 && _.size(this._targetingId(s.id)) <= 3 }
+      { filter: s => s.energy > 0 && _.size(this._targetingId(s.id)) <= 3 }
     );
 
     if (target) { return target; }
 
     var orElse = this.delegate.pos.findClosestByPath(FIND_SOURCES,
-      { filter: s => s.energy > 50 });
+      { filter: s => s.energy > 0 });
     return orElse;
   }
 

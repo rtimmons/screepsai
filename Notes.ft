@@ -17,12 +17,16 @@
 - Prioritize things based on [`Room.energyAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyAvailable) and [`energyCapacityAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyCapacityAvailable).
 - Automatically create roads from source to spawn and RommController
 - Prioritize delivering energy to spawns over construction
+- Prioritize extensions over other construction sites
+- Try to finish extensions fully before dedicating energy to unfinished ones
 - Any way to avoid losing energy when transferring a full creep to a spawn with only 1 capacity?
 - Some sort of automated testing?
 - Change `bodyType` based on room energy
 - Realtime inspection utils
 - Realtime re-direction (changing roles/modes, etc.)
 - Better prioritize what to spawn
+	- One low-level harvester & upgrader if no other creeps
+	- Upgrade right now if in danger of controller getting expired by timer
 	- Something to switch roles?
 	- If no construction sites, don't spawn more builders
 - When first setting up room, cache the 'best' sources

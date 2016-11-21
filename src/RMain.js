@@ -9,7 +9,7 @@ class RMain {
   constructor(params) {
     this.memory = params.memory;
     this.game   = params.game;
-    this.rgame  = new RGame();
+    this.rgame  = new RGame({ game: Game });
   }
 
   tick() {
@@ -58,14 +58,14 @@ TOUGH	10
       WORK,
       WORK,
       MOVE, MOVE,
+      MOVE, MOVE,
       CARRY, CARRY,
-      MOVE,
     ];
     
     this.rgame.ensureCreepCount({
       role: 'harvester',
-      atLeast: 5,
-      whenAvailable: 550,
+      atLeast: 4,
+      whenAvailable: 600,
       
       // When papa's getting paid
       bodyParts: l2harvester
@@ -79,14 +79,14 @@ TOUGH	10
       WORK,
       WORK,
       WORK,
-      CARRY,
+      CARRY, MOVE,
       MOVE, MOVE,
     ];
 
     this.rgame.ensureCreepCount({
       role: 'builder',
       atLeast: 4,
-      whenAvailable: 550,
+      whenAvailable: 600,
       bodyParts: l2builder
     });
 
@@ -95,8 +95,8 @@ TOUGH	10
       WORK,
       WORK,
       MOVE, MOVE,
+      MOVE, MOVE,
       CARRY, CARRY,
-      MOVE,
     ];
 
     var l1upgrader = [
@@ -107,7 +107,7 @@ TOUGH	10
     this.rgame.ensureCreepCount({
       role: 'upgrader',
       atLeast: 100,
-      whenAvailable: 550,
+      whenAvailable: 600,
       bodyParts: l2upgrader
     });
 

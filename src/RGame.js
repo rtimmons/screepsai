@@ -1,6 +1,11 @@
 const SPAWN_NAME = 'Spawn1';
 
 class RGame {
+
+  constructor(params) {
+    this.game = params.game;
+    this.budget = Game.spawns[SPAWN_NAME].room.energyAvailable;
+  }
   /*
   {
     role: 'harvester',
@@ -13,12 +18,11 @@ class RGame {
   // https://screeps.com/a/#!/sim/tutorial/4
 
   ensureCreepCount(params) {
-    if (Game.spawns[SPAWN_NAME].room.energyAvailable < params.whenAvailable) {
+    if (this.budget < params.whenAvailable) {
       // console.log('Not enough energy to spawn ' + JSON.stringify(params));
       return;
     }
 
-    whenAvailable: 550;
     var existing = _.filter(Game.creeps, (creep) => creep.memory.role == params.role);
 
     // console.log(`Wanted ${params.atLeast} ${params.role}s; have ${existing.length}`);
@@ -30,6 +34,8 @@ class RGame {
       );
       if (_.isString(newName)) {
         console.log('Spawned ' + params.role + ': ' + newName);
+        // TODO: subtract by actual cost
+        this.budget = this.budget - params.whenAvailable;
       }
     }
   }
