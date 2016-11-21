@@ -1,7 +1,16 @@
 var RMain = require('RMain');
 var GameUtil = require('GameUtil');
+var DecoratedCreep = require('DecoratedCreep');
+
+deco = function (name) {
+  return Game.creeps[name].deco();
+};
 
 module.exports.loop = function () {
+
+    Creep.prototype.deco = function () {
+      return new DecoratedCreep(this);
+    };
 
     GameUtil.extend(Game);
 

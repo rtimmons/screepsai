@@ -14,6 +14,20 @@ class DecoratedCreep {
     return this.delegate.ticksToLive;
   }
 
+  toString() {
+    return `${this.getRole()}/${this.getMode()}!${this.ttl()} -> ${this.getTargetingDescription()}`;
+  }
+
+  getTargetingDescription() {
+    var targetId = this.getTargetId();
+    if (!targetId) { return 'none'; }
+
+    var target = Game.getObjectById(targetId);
+    if (!target) { return '<dne>'; }
+
+    return `${target.structureType} (${targetId})`;
+  }
+
   tick(time) {
     if (this.delegate.ticksToLive <= 1) {
       this._clearTarget();
