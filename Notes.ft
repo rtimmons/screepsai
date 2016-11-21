@@ -16,6 +16,7 @@
 - Give creep names indicating role, body, and instance#
 - Prioritize things based on [`Room.energyAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyAvailable) and [`energyCapacityAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyCapacityAvailable).
 - Automatically create roads from source to spawn and RommController
+- ability to lock a harvester to a source to keep it properly utilizing it?
 - Prioritize delivering energy to spawns over construction
 - Prioritize extensions over other construction sites
 - If no energy left in room, dump somewhere?

@@ -127,13 +127,13 @@ TOUGH	10
       // if we have base levels, then more
       {
         role: 'harvester',
-        atLeast: 4,
+        atLeast: 5,
         whenAvailable: 600,
         bodyParts: l2harvester,
       },
       {
         role: 'builder',
-        atLeast: 4,
+        atLeast: 3,
         whenAvailable: 600,
         bodyParts: l2builder,
       },
