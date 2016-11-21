@@ -61,7 +61,7 @@ TOUGH	10
       MOVE, MOVE,
       CARRY, CARRY,
     ];
-    
+
     this.rgame.ensureCreepCount({
       role: 'harvester',
       atLeast: 4,
@@ -114,19 +114,21 @@ TOUGH	10
     // To kill: Game.creeps['Harvester1'].suicide()
     // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep
 
-    // var tower = this.game.getObjectById('TOWER_ID');
-    // if(tower) {
-    //     var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-    //         filter: (structure) => structure.hits < structure.hitsMax
-    //     });
-    //     if(closestDamagedStructure) {
-    //         tower.repair(closestDamagedStructure);
-    //     }
-    //     var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-    //     if(closestHostile) {
-    //         tower.attack(closestHostile);
-    //     }
-    // }
+    // TODO: move somewhere else
+    // TODO: repeat for all towers?
+    var tower = this.game.getObjectById('583276ecf3a0a9785e5e5fa3');
+    if(tower) {
+        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+            filter: (structure) => structure.hits < structure.hitsMax
+        });
+        if(closestDamagedStructure) {
+            tower.repair(closestDamagedStructure);
+        }
+        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+        if(closestHostile) {
+            tower.attack(closestHostile);
+        }
+    }
 
     for (var name in this.game.creeps) {
       var creep = this.game.creeps[name];
