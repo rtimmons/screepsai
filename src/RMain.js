@@ -97,6 +97,32 @@ TOUGH	10
         whenAvailable: 600,
         bodyParts: l2upgrader,
       },
+      {
+        role: 'builder',
+        atLeast: 1,
+        whenAvailable: 600,
+        bodyParts: l2builder
+      },
+
+      // let's get 2 of each
+      {
+        role: 'harvester',
+        atLeast: 2,
+        whenAvailable: 600,
+        bodyParts: l2harvester,
+      },
+      {
+        role: 'upgrader',
+        atLeast: 2,
+        whenAvailable: 600,
+        bodyParts: l2upgrader,
+      },
+      {
+        role: 'builder',
+        atLeast: 2,
+        whenAvailable: 600,
+        bodyParts: l2builder
+      },
 
       // if we have base levels, then more
       { 

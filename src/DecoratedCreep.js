@@ -83,6 +83,7 @@ class DecoratedCreep {
   }
 
   setTarget(target) {
+    // console.log(`${this.delegate.name} setting target to ${target.structureType}`);
     this._clearTarget();
     this.delegate.memory.targetId = target.id;
 
@@ -135,7 +136,9 @@ class DecoratedCreep {
          structure.structureType == STRUCTURE_SPAWN ||
          structure.structureType == STRUCTURE_TOWER)
         && structure.energy < structure.energyCapacity
-        && _.size(this._targetingId(structure.id)) <= 1
+        && (
+          _.size(this._targetingId(structure.id)) <= 
+           (structure.structureType == STRUCTURE_SPAWN) ? 3 : 1)
     );
     if (!target) {
       target = this.closestStructureWhere((structure) =>
@@ -151,12 +154,18 @@ class DecoratedCreep {
   }
 
   depositToBestEnergyDeposit() {
-    var target = this.bestEnergyDeposit();
+    var existingTargetId = this.getTargetId();
+    if (existingTargetId) {
+      var target = Game.getObjectById(existingTargetId);
+    }
+    target = target || this.bestEnergyDeposit();
+
     if (target) {
       this.setTarget(target);
       this.unlessInRnage(target,
         (creep, target) => creep.transfer(target, RESOURCE_ENERGY)
       );
+      this._clearTarget();
       return true;
     }
     return false;
