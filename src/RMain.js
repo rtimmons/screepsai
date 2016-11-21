@@ -127,7 +127,7 @@ TOUGH	10
       // if we have base levels, then more
       {
         role: 'harvester',
-        atLeast: 5,
+        atLeast: 3,
         whenAvailable: 600,
         bodyParts: l2harvester,
       },
@@ -142,7 +142,7 @@ TOUGH	10
       // as long as we ahve enough builders and harvesters
       {
         role: 'upgrader',
-        atLeast: 100,
+        atLeast: 5,
         whenAvailable: 600,
         bodyParts: l2upgrader,
       },
