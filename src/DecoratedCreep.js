@@ -181,6 +181,9 @@ class DecoratedCreep {
 
     var orElse = this.delegate.pos.findClosestByPath(FIND_SOURCES,
       { filter: s => s.energy > 0 });
+      if (orElse) { return orElse; }
+    
+    orElse = this.delegate.pos.findClosestByPath(FIND_SOURCES);
     return orElse;
   }
 

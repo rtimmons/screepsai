@@ -23,7 +23,9 @@
 - Try to finish extensions fully before dedicating energy to unfinished ones
 - Any way to avoid losing energy when transferring a full creep to a spawn with only 1 capacity?
 - Some sort of automated testing?
+- Build an upgrader/harvester if all energy sources in room are depleted (and able to) to clear out sources
 - Change `bodyType` based on room energy
+- Don't hog the energy source for more than N harvest/* cycles
 - Realtime inspection utils
 - Realtime re-direction (changing roles/modes, etc.)
 - Better prioritize what to spawn
@@ -57,7 +59,7 @@ Game.spawns['Spawn1'].createCreep(
         CARRY,
       ], 
         undefined,
-        {role: 'harvester'}
+        {role: 'upgrader'}
       );
 ```
 
