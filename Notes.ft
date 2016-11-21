@@ -18,6 +18,8 @@
 - Automatically create roads from source to spawn and RommController
 - Prioritize delivering energy to spawns over construction
 - Prioritize extensions over other construction sites
+- If no energy left in room, dump somewhere?
+- If ttl before harvesting is low, regen at spawn
 - Try to finish extensions fully before dedicating energy to unfinished ones
 - Any way to avoid losing energy when transferring a full creep to a spawn with only 1 capacity?
 - Some sort of automated testing?
