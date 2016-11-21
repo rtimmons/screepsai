@@ -62,18 +62,6 @@ TOUGH	10
       CARRY, CARRY,
     ];
 
-    this.rgame.ensureCreepCount({
-      role: 'harvester',
-      atLeast: 4,
-      whenAvailable: 600,
-      
-      // When papa's getting paid
-      bodyParts: l2harvester
-
-      // when we ain't got nothin to eat
-      // bodyParts: l1harvester
-    });
-
     var l2builder = [
       WORK,
       WORK,
@@ -82,13 +70,6 @@ TOUGH	10
       CARRY, MOVE,
       MOVE, MOVE,
     ];
-
-    this.rgame.ensureCreepCount({
-      role: 'builder',
-      atLeast: 4,
-      whenAvailable: 600,
-      bodyParts: l2builder
-    });
 
     var l2upgrader = [
       WORK,
@@ -103,12 +84,46 @@ TOUGH	10
       WORK, MOVE, CARRY,
     ];
 
-    // last in precedence - just keep on building upgraders as long as we ahve enough builders and harvesters
-    this.rgame.ensureCreepCount({
-      role: 'upgrader',
-      atLeast: 100,
-      whenAvailable: 600,
-      bodyParts: l2upgrader
+    var ensure = [
+      {
+        role: 'harvester',
+        atLeast: 1,
+        whenAvailable: 600,
+        bodyParts: l2harvester,
+      },
+      {
+        role: 'upgrader',
+        atLeast: 1,
+        whenAvailable: 600,
+        bodyParts: l2upgrader,
+      },
+
+      // if we have base levels, then more
+      { 
+        role: 'harvester',
+        atLeast: 4,
+        whenAvailable: 600,
+        bodyParts: l2harvester
+      },
+      {
+        role: 'builder',
+        atLeast: 4,
+        whenAvailable: 600,
+        bodyParts: l2builder
+      },
+
+      // last in precedence - just keep on building upgraders
+      // as long as we ahve enough builders and harvesters
+      {
+        role: 'upgrader',
+        atLeast: 100,
+        whenAvailable: 600,
+        bodyParts: l2upgrader
+      },
+    ];
+
+    ensure.forEach((e) => {
+      this.rgame.ensureCreepCount(e);
     });
 
     // To kill: Game.creeps['Harvester1'].suicide()

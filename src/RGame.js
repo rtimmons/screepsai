@@ -23,7 +23,11 @@ class RGame {
       return;
     }
 
-    var existing = _.filter(Game.creeps, (creep) => creep.memory.role == params.role);
+    // TODO: use deco here?
+    var existing = _.filter(Game.creeps, (creep) => {
+      return creep.memory.role == params.role &&
+             creep.ticksToLive >= 300;
+    });
 
     // console.log(`Wanted ${params.atLeast} ${params.role}s; have ${existing.length}`);
     if (existing.length < params.atLeast) {
