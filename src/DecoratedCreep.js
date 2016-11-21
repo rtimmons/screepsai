@@ -4,6 +4,10 @@ class DecoratedCreep {
     this.delegate = delegate;
   }
 
+  ttl() {
+    return this.delegate.ticksToLive;
+  }
+
   tick(time) {
     if (this.delegate.ticksToLive <= 1) {
       this._clearTarget();
@@ -15,6 +19,9 @@ class DecoratedCreep {
     }
   }
 
+  getRole() {
+    return this.role();
+  }
   role() {
     return this.delegate.memory.role;
   }
@@ -76,6 +83,10 @@ class DecoratedCreep {
     this._targetingId(target.id)[this.delegate.id] = 1;
   }
 
+  getTargetId() {
+    return this.delegate.memory.targetId;
+  }
+
   structuresWhere(predicate) {
     return this.delegate.room.find(FIND_STRUCTURES, { filter: predicate });
   }
@@ -131,6 +142,18 @@ class DecoratedCreep {
     }
 
     return target;
+  }
+
+  depositToBestEnergyDeposit() {
+    var target = this.bestEnergyDeposit();
+    if (target) {
+      this.setTarget(target);
+      this.unlessInRnage(target,
+        (creep, target) => creep.transfer(target, RESOURCE_ENERGY)
+      );
+      return true;
+    }
+    return false;
   }
 
   bestSource() {

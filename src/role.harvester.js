@@ -9,7 +9,7 @@ var roleHarvester = {
           deco.setMode('depositing');
         }
 
-        if (!deco.modeIs('harvesting') && deco.hasEnergyCapacity()) {
+        if (!(deco.modeIs('harvesting') || deco.modeIs('depositing')) && deco.hasEnergyCapacity()) {
           deco.setMode('harvesting');
         }
 
@@ -22,13 +22,8 @@ var roleHarvester = {
         }
 
         if (deco.modeIs('depositing')) {
-          var target = deco.bestEnergyDeposit();
-          if (target) {
-            deco.unlessInRnage(target,
-              (creep, target) => creep.transfer(target, RESOURCE_ENERGY)
-            );
-          } else {
-            roleBuilder.run(deco);
+          if (!deco.depositToBestEnergyDeposit()) {
+              roleBuilder.run(deco);
           }
         }
       },
