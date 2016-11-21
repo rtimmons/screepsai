@@ -12,7 +12,7 @@
 ## Tasks
 
 **tasks**.todo
-- Convert existing roles to `DecoBuilder` OO model
+- Convert existing roles to `DecoBuilder` OO model @done(2016-11-20)
 - Give creep names indicating role, body, and instance#
 - Prioritize things based on [`Room.energyAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyAvailable) and [`energyCapacityAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyCapacityAvailable).
 - Automatically create roads from source to spawn and RommController
@@ -21,8 +21,10 @@
 - Some sort of automated testing?
 - Change `bodyType` based on room energy
 - Realtime inspection utils
+- Realtime re-direction (changing roles/modes, etc.)
 - Better prioritize what to spawn
 	- Something to switch roles?
+	- If no construction sites, don't spawn more builders
 - When first setting up room, cache the 'best' sources
 
 ```javascript

@@ -48,57 +48,67 @@ TOUGH	10
     // WORK = 100
     // MOVE = 50
     // CARRY = 50
+
+    var l1harvester = [
+      WORK, MOVE, CARRY
+    ];
+
+    var l2harvester = [
+      WORK,
+      WORK,
+      WORK,
+      MOVE, MOVE,
+      CARRY, CARRY,
+      MOVE,
+    ];
+    
     this.rgame.ensureCreepCount({
       role: 'harvester',
-      atLeast: 7,
+      atLeast: 5,
       whenAvailable: 550,
-      bodyParts: [
+      
+      // When papa's getting paid
+      bodyParts: l2harvester
 
-        // When papa's getting paid
-        WORK,
-        WORK,
-        WORK,
-        MOVE, MOVE,
-        CARRY, CARRY,
-        MOVE,
-
-        // when we ain't got nothin to eat
-        // WORK,
-        // MOVE,
-        // CARRY,
-      ],
+      // when we ain't got nothin to eat
+      // bodyParts: l1harvester
     });
+
+    var l2builder = [
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      CARRY,
+      MOVE, MOVE,
+    ];
 
     this.rgame.ensureCreepCount({
       role: 'builder',
-      atLeast: 3,
+      atLeast: 4,
       whenAvailable: 550,
-      bodyParts: [
-        WORK,
-        WORK,
-        WORK,
-        WORK,
-        CARRY,
-        MOVE, MOVE,
-      ],
+      bodyParts: l2builder
     });
 
+    var l2upgrader = [
+      WORK,
+      WORK,
+      WORK,
+      MOVE, MOVE,
+      CARRY, CARRY,
+      MOVE,
+    ];
+
+    var l1upgrader = [
+      WORK, MOVE, CARRY,
+    ];
+
+    // last in precedence - just keep on building upgraders as long as we ahve enough builders and harvesters
     this.rgame.ensureCreepCount({
       role: 'upgrader',
-      atLeast: 5,
+      atLeast: 100,
       whenAvailable: 550,
-      bodyParts: [
-        WORK,
-        WORK,
-        WORK,
-        MOVE, MOVE,
-        CARRY, CARRY,
-        MOVE,
-
-        // WORK,
-        // MOVE,
-        // CARRY,
-      ],
+      bodyParts: l2upgrader
     });
 
     // To kill: Game.creeps['Harvester1'].suicide()
