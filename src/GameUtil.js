@@ -7,7 +7,7 @@ module.exports = {
       return new Deco(Game.creeps[creepName]);
     };
 
-    clz.targetReport = function() {
+    clz.targetReport = function () {
       var report = [];
       var structuresById = {};
 
@@ -17,11 +17,12 @@ module.exports = {
         var str = `${k}(${deco.getRole()}/${deco.getMode()}!${deco.ttl()}) => `;
         if (targetId) {
           structuresById[targetId] =
-            structuresById[targetId] || 
+            structuresById[targetId] ||
               Game.getObjectById(targetId);
 
           str += `${structuresById[targetId].structureType} (${targetId})`;
         }
+
         report.push(str);
       }
 

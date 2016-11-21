@@ -50,7 +50,7 @@ TOUGH	10
     // CARRY = 50
 
     var l1harvester = [
-      WORK, MOVE, CARRY
+      WORK, MOVE, CARRY,
     ];
 
     var l2harvester = [
@@ -101,7 +101,7 @@ TOUGH	10
         role: 'builder',
         atLeast: 1,
         whenAvailable: 600,
-        bodyParts: l2builder
+        bodyParts: l2builder,
       },
 
       // let's get 2 of each
@@ -121,21 +121,21 @@ TOUGH	10
         role: 'builder',
         atLeast: 2,
         whenAvailable: 600,
-        bodyParts: l2builder
+        bodyParts: l2builder,
       },
 
       // if we have base levels, then more
-      { 
+      {
         role: 'harvester',
         atLeast: 4,
         whenAvailable: 600,
-        bodyParts: l2harvester
+        bodyParts: l2harvester,
       },
       {
         role: 'builder',
         atLeast: 4,
         whenAvailable: 600,
-        bodyParts: l2builder
+        bodyParts: l2builder,
       },
 
       // last in precedence - just keep on building upgraders
@@ -144,7 +144,7 @@ TOUGH	10
         role: 'upgrader',
         atLeast: 100,
         whenAvailable: 600,
-        bodyParts: l2upgrader
+        bodyParts: l2upgrader,
       },
     ];
 
@@ -158,17 +158,18 @@ TOUGH	10
     // TODO: move somewhere else
     // TODO: repeat for all towers?
     var tower = this.game.getObjectById('583276ecf3a0a9785e5e5fa3');
-    if(tower) {
-        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < structure.hitsMax
+    if (tower) {
+      var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+          filter: (structure) => structure.hits < structure.hitsMax,
         });
-        if(closestDamagedStructure) {
-            tower.repair(closestDamagedStructure);
-        }
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if(closestHostile) {
-            tower.attack(closestHostile);
-        }
+      if (closestDamagedStructure) {
+        tower.repair(closestDamagedStructure);
+      }
+
+      var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+      if (closestHostile) {
+        tower.attack(closestHostile);
+      }
     }
 
     for (var name in this.game.creeps) {

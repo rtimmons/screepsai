@@ -23,7 +23,7 @@ var roleHarvester = {
 
         if (deco.modeIs('depositing')) {
           if (!deco.depositToBestEnergyDeposit()) {
-              roleBuilder.run(deco);
+            roleBuilder.run(deco);
           }
         }
       },

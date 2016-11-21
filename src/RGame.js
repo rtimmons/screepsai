@@ -24,10 +24,10 @@ class RGame {
     }
 
     // TODO: use deco here?
-    var existing = _.filter(Game.creeps, (creep) => {
-      return creep.memory.role == params.role &&
-             creep.ticksToLive >= 300;
-    });
+    var existing = _.filter(Game.creeps, (creep) =>
+      creep.memory.role == params.role &&
+      creep.ticksToLive >= 300
+    );
 
     // console.log(`Wanted ${params.atLeast} ${params.role}s; have ${existing.length}`);
     if (existing.length < params.atLeast) {
@@ -38,6 +38,7 @@ class RGame {
       );
       if (_.isString(newName)) {
         console.log('Spawned ' + params.role + ': ' + newName);
+
         // TODO: subtract by actual cost
         this.budget = this.budget - params.whenAvailable;
       }

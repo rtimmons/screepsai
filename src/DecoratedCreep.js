@@ -4,7 +4,7 @@ class DecoratedCreep {
     this.delegate = delegate;
   }
 
-  setRoleMode(role,mode) {
+  setRoleMode(role, mode) {
     this.setRole(role);
     this.setMode(mode);
     this.delegate.say(`${role}/${mode}`);
@@ -28,6 +28,7 @@ class DecoratedCreep {
   getRole() {
     return this.role();
   }
+
   role() {
     return this.delegate.memory.role;
   }
@@ -137,7 +138,7 @@ class DecoratedCreep {
          structure.structureType == STRUCTURE_TOWER)
         && structure.energy < structure.energyCapacity
         && (
-          _.size(this._targetingId(structure.id)) <= 
+          _.size(this._targetingId(structure.id)) <=
            (structure.structureType == STRUCTURE_SPAWN) ? 3 : 1)
     );
     if (!target) {
@@ -158,6 +159,7 @@ class DecoratedCreep {
     if (existingTargetId) {
       var target = Game.getObjectById(existingTargetId);
     }
+
     target = target || this.bestEnergyDeposit();
 
     if (target) {
@@ -168,6 +170,7 @@ class DecoratedCreep {
       this._clearTarget();
       return true;
     }
+
     return false;
   }
 
@@ -181,8 +184,8 @@ class DecoratedCreep {
 
     var orElse = this.delegate.pos.findClosestByPath(FIND_SOURCES,
       { filter: s => s.energy > 0 });
-      if (orElse) { return orElse; }
-    
+    if (orElse) { return orElse; }
+
     orElse = this.delegate.pos.findClosestByPath(FIND_SOURCES);
     return orElse;
   }
