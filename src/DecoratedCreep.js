@@ -131,6 +131,17 @@ class DecoratedCreep {
   }
 
   bestEnergyDeposit() {
+
+    // we want to keep towers full first
+    // TODO: maybe distinct role for tower harvesting?
+    var tower = this.closestStructureWhere(s =>
+      s.structureType == STRUCTURE_TOWER &&
+      s.energy < s.energyCapacity / 2
+    );
+    if (tower) {
+      return tower;
+    }
+
     var target = this.closestStructureWhere((structure) =>
         (structure.structureType == STRUCTURE_EXTENSION ||
          structure.structure     == STRUCTURE_CONTROLLER ||
