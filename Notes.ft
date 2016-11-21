@@ -1,5 +1,7 @@
 # Ryan's Screeps Notes
 
+Best viewed using [FoldingText](http://www.foldingtext.com/).
+
 ## Activity Log
 
 - 2016-11-17: Setup first spawn `FirstSpawn`
@@ -14,11 +16,18 @@
 **tasks**.todo
 - Convert existing roles to `DecoBuilder` OO model @done(2016-11-20)
 
+- Research
+	- Combat
+	- How `Storage` works
 
+- Record stats
+	- Average time to go from mode->mode per role,level. Do different behavior if ttl is less than time to complete current goal
+	- Time spent with no energy sources available.
 
 - Manual intervention
 	- Give creep names indicating role, body, and instance#
 	- Realtime inspection utils
+	- Debug logging by creep name or id
 	- Realtime re-direction (changing roles/modes, etc.)
 
 - Automate construction
@@ -26,6 +35,7 @@
 	- Keep track of frequently-trodden unpaved roads
 
 - Prioritize actions
+	- If no active energy, move to closest energy source
 	- Prioritize refilling towers unless need harvesters or upgraders then spawns
 	- Prioritize things based on [`Room.energyAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyAvailable) and [`energyCapacityAvailable`](http://support.screeps.com/hc/en-us/articles/203079011-Room#energyCapacityAvailable).
 	- Prioritize delivering energy to spawns over construction
@@ -51,21 +61,70 @@
 
 - When first setting up room, cache the 'best' sources
 
+Investigations.todo
+- path finding (store in memory?)
+- FSM for given role & state => action
+
+Ideas.todo
+- Roles just different priorities of actions?
+
+## Declarative Levels
+
+TODO: this isn't really fleshed out...
+
+```javascript
+{
+	levels: [
+		{
+			capcityMin: 0,
+			capacityMax: 150,
+			roles: {
+				harvester: {
+					prefix: 'h1',
+					parts: {W:1, M:1, C:1},
+				},
+				builder: {
+					prefix: 'b1',
+					parts: {W:1, M:1, C:1},
+				}
+				upgrader: {
+					prefix: 'u1',
+					parts: {W:1, M:1, C:1},
+				}
+			}
+		},
+		{
+			capcityMin: 151,
+			capacityMax: 300,
+			roles: {
+				harvester: {
+					prefix: 'h1',
+					parts: {W:1, M:1, C:1},
+				},
+				builder: {
+					prefix: 'b1',
+					parts: {W:1, M:1, C:1},
+				}
+				upgrader: {
+					prefix: 'u1',
+					parts: {W:1, M:1, C:1},
+				}
+			}
+		}
+	]
+}
+
+```
+
+
+## Console Commands
+
 ```javascript
 Game.spawns['Spawn1'].createCreep( [WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE],
     'HarvesterBig',
     { role: 'harvester' } );
 ```
 
-Investigations.todo
-- path finding (store in memory?)
-- FSM for given role & state => action
-
-Ideas.todo
-- Roles just different priorities?
-
-
-## Console Commands
 
 ```javascript
 Game.spawns['Spawn1'].createCreep(
