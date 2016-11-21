@@ -15,7 +15,7 @@ var roleBuilder = {
     if (deco.modeIs('constructing')) {
       var target = deco.bestConstructionSite();
       if (target) {
-        deco.moveAndDo(targets, 'build');
+        deco.moveAndDo(target, 'build');
       } else {
         deco.setMode('building');
       }

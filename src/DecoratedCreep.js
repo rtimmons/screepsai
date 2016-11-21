@@ -8,6 +8,7 @@ class DecoratedCreep {
     if (this.delegate.ticksToLive <= 1) {
       this._clearTarget();
     }
+
     // re-compute targets
     if (time % 25 == 0) {
       this._clearTarget();
@@ -19,8 +20,13 @@ class DecoratedCreep {
   }
 
   setRole(role) {
+    if (this.delegate.memory.role == role) {
+      return;
+    }
+
     this._clearTarget();
     this.delegate.memory.role = role;
+    this.delegate.say(role);
   }
 
   mode() {
@@ -32,8 +38,13 @@ class DecoratedCreep {
   }
 
   setMode(mode) {
+    if (this.delegate.memory.mode == mode) {
+      return;
+    }
+
     this._clearTarget();
     this.delegate.memory.mode = mode;
+    this.delegate.say(mode);
   }
 
   modeIs(mode) {
@@ -57,10 +68,11 @@ class DecoratedCreep {
 
     delete this.delegate.memory.targetId;
   }
+
   setTarget(target) {
     this._clearTarget();
     this.delegate.memory.targetId = target.id;
-    
+
     this._targetingId(target.id)[this.delegate.id] = 1;
   }
 
@@ -117,24 +129,25 @@ class DecoratedCreep {
         && structure.energy < structure.energyCapacity
       );
     }
+
     return target;
   }
 
   bestSource() {
     var target = this.delegate.pos.findClosestByPath(
-      FIND_SOURCES, 
+      FIND_SOURCES,
       { filter: s => s.energy > 50 && _.size(this._targetingId(s.id)) <= 3 }
     );
 
     if (target) { return target; }
-    
+
     var orElse = this.delegate.pos.findClosestByPath(FIND_SOURCES,
       { filter: s => s.energy > 50 });
     return orElse;
   }
 
   harvestFromBestSource() {
-    this.deco.moveAndDo(this.bestSource(), 'harvest');
+    this.moveAndDo(this.bestSource(), 'harvest');
   }
 
   upgradeRoomController() {

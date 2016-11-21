@@ -5,11 +5,23 @@ var roleHarvester = {
     /** @param {Creep} creep **/
     run: function (deco) {
 
-        // fill up
-        if (deco.hasEnergyCapacity()) {
+        if (deco.modeIs('harvesting') && deco.atEnergyCapcity()) {
+          deco.setMode('depositing');
+        }
+
+        if (!deco.modeIs('harvesting') && deco.hasEnergyCapacity()) {
           deco.setMode('harvesting');
-          deco.moveAndDo(deco.bestSource(), 'harvest');
-        } else {
+        }
+
+        if (deco.energyDrained()) {
+          deco.setMode('harvesting');
+        }
+
+        if (deco.modeIs('harvesting')) {
+          deco.harvestFromBestSource();
+        }
+
+        if (deco.modeIs('depositing')) {
           var target = deco.bestEnergyDeposit();
           if (target) {
             deco.unlessInRnage(target,
@@ -21,5 +33,4 @@ var roleHarvester = {
         }
       },
   };
-
 module.exports = roleHarvester;

@@ -14,6 +14,7 @@ class RGame {
 
   ensureCreepCount(params) {
     if (Game.spawns[SPAWN_NAME].room.energyAvailable < params.whenAvailable) {
+      // console.log('Not enough energy to spawn ' + JSON.stringify(params));
       return;
     }
 

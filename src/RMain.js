@@ -58,7 +58,7 @@ TOUGH	10
         WORK,
         WORK,
         WORK,
-        CARRY, CARRY,
+        MOVE, MOVE,
         CARRY, CARRY,
         MOVE,
 
@@ -69,19 +69,19 @@ TOUGH	10
       ],
     });
 
-    // this.rgame.ensureCreepCount({
-    //   role: 'builder',
-    //   atLeast: 3,
-    //   whenAvailable: 550,
-    //   bodyParts: [
-    //     WORK,
-    //     WORK,
-    //     WORK,
-    //     WORK,
-    //     CARRY,CARRY,
-    //     MOVE
-    //   ]
-    // });
+    this.rgame.ensureCreepCount({
+      role: 'builder',
+      atLeast: 3,
+      whenAvailable: 550,
+      bodyParts: [
+        WORK,
+        WORK,
+        WORK,
+        WORK,
+        CARRY,
+        MOVE, MOVE,
+      ],
+    });
 
     this.rgame.ensureCreepCount({
       role: 'upgrader',
