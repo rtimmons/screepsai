@@ -34,7 +34,7 @@ class RGame {
       var newName = Game.spawns[SPAWN_NAME].createCreep(
         params.bodyParts,
         undefined,
-        { role: params.role }
+        { role: params.role, level: params.level }
       );
       if (_.isString(newName)) {
         console.log('Spawned ' + params.role + ': ' + newName);

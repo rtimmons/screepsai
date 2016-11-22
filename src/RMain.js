@@ -170,12 +170,14 @@ TOUGH	10
         atLeast: 1,
         whenAvailable: 1200,
         bodyParts: l4harvester,
+        level: 4,
       },
       {
         role: 'upgrader',
         atLeast: 1,
         whenAvailable: 1200,
         bodyParts: l4upgrader,
+        level: 4,
       },
       {
         role: 'builder',
@@ -190,18 +192,21 @@ TOUGH	10
         atLeast: 2,
         whenAvailable: 1200,
         bodyParts: l4harvester,
+        level: 4,
       },
       {
         role: 'upgrader',
         atLeast: 2,
         whenAvailable: 1200,
         bodyParts: l4upgrader,
+        level: 4,
       },
       {
         role: 'builder',
         atLeast: 2,
         whenAvailable: 1200,
         bodyParts: l4builder,
+        level: 4,
       },
 
       // if we have base levels, then more
@@ -210,12 +215,14 @@ TOUGH	10
         atLeast: 3,
         whenAvailable: 1200,
         bodyParts: l4harvester,
+        level: 4,
       },
       {
         role: 'builder',
         atLeast: 3,
         whenAvailable: 1200,
         bodyParts: l4builder,
+        level: 4,
       },
 
       // last in precedence - just keep on building upgraders
@@ -225,6 +232,7 @@ TOUGH	10
         atLeast: 5,
         whenAvailable: 1200,
         bodyParts: l4upgrader,
+        level: 4,
       },
     ];
 
