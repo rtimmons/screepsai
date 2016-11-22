@@ -26,4 +26,9 @@ module.exports.loop = function () {
         console.log('Clearing non-existing creep memory:', name);
       }
     }
+
+    // these are just cache-values so they shouldn't live too long anyway
+    if (Game.time % 150 == 0) {
+      Memory.targeting = {};
+    }
   };

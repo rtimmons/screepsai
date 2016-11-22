@@ -40,11 +40,6 @@ class DecoratedCreep {
     if (this.delegate.ticksToLive <= 1) {
       this._clearTarget();
     }
-
-    // re-compute targets
-    if (time % 25 == 0) {
-      this._clearTarget();
-    }
   }
 
   getRole() {
