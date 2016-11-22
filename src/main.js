@@ -28,7 +28,7 @@ module.exports.loop = function () {
     }
 
     // these are just cache-values so they shouldn't live too long anyway
-    if (Game.time % 150 == 0) {
+    if (Game.time % 750 == 0) {
       Memory.targeting = {};
     }
   };
