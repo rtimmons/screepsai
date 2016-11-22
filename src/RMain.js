@@ -12,7 +12,7 @@ class RMain {
     this.rgame  = new RGame({ game: Game });
   }
 
-  tick() {
+  spawn() {
 
     /*
 Body part	Build cost	Effect per one body part
@@ -201,13 +201,13 @@ TOUGH	10
         bodyParts: l4upgrader,
         level: 4,
       },
-      {
-        role: 'builder',
-        atLeast: 2,
-        whenAvailable: 1200,
-        bodyParts: l4builder,
-        level: 4,
-      },
+      // {
+      //   role: 'builder',
+      //   atLeast: 2,
+      //   whenAvailable: 1200,
+      //   bodyParts: l4builder,
+      //   level: 4,
+      // },
 
       // if we have base levels, then more
       {
@@ -217,13 +217,13 @@ TOUGH	10
         bodyParts: l4harvester,
         level: 4,
       },
-      {
-        role: 'builder',
-        atLeast: 3,
-        whenAvailable: 1200,
-        bodyParts: l4builder,
-        level: 4,
-      },
+      // {
+      //   role: 'builder',
+      //   atLeast: 3,
+      //   whenAvailable: 1200,
+      //   bodyParts: l4builder,
+      //   level: 4,
+      // },
 
       // last in precedence - just keep on building upgraders
       // as long as we ahve enough builders and harvesters
@@ -243,6 +243,11 @@ TOUGH	10
     // To kill: Game.creeps['Harvester1'].suicide()
     // Also: StructureSpawn.renewCreep - http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep
 
+  }
+
+  tick() {
+    this.spawn();
+
     // TODO: move somewhere else
     // TODO: repeat for all towers?
     var tower = this.game.getObjectById('583276ecf3a0a9785e5e5fa3');
@@ -254,7 +259,7 @@ TOUGH	10
           filter: (s) => 
             s.hits < s.hitsMax &&
             ((s.structureType != 'constructedWall' && 
-              s.structureType != 'rampart') || s.hits <= 500),
+              s.structureType != 'rampart') || s.hits <= 1000),
         });
       if (closestDamagedStructure) {
         tower.repair(closestDamagedStructure);
