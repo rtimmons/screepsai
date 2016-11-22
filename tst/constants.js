@@ -1,3 +1,5 @@
+// jscs:disable
+
 // https://screeps.com/a/constants.js
 module.exports = {
     OK: 0,

@@ -30,7 +30,7 @@ module.exports = function(grunt) {
       }
     },
     jscs: {
-        src: "src/*.js",
+        src: ["src/*.js","tst/**/*.js"],
         options: {
             config: ".jscsrc",
 
