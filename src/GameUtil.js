@@ -7,6 +7,13 @@ module.exports = {
       return new Deco(Game.creeps[creepName]);
     };
 
+    clz.energyReport = function () {
+      var avail = Game.spawns['Spawn1'].room.energyAvailable;
+      var capacity = Game.spawns['Spawn1'].room.energyCapacityAvailable;
+
+      console.log(`Room has ${avail} available out of ${capacity}`);
+    };
+
     clz.targetReport = function () {
       var report = [];
       var structuresById = {};
