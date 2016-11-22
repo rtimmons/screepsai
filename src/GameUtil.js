@@ -41,7 +41,9 @@ module.exports = {
       for (var k in Game.creeps) {
         var c = Game.creeps[k];
         report.push(JSON.stringify({
-          role: c.memory.role, mode: c.memory.mode,
+          role: c.memory.role,
+          mode: c.memory.mode,
+          level: c.memory.level,
           body: c.body.map(b => b.type.substring(0, 1)).sort().join(''),
           ttl: c.ticksToLive,
           name: c.name,
