@@ -83,11 +83,12 @@ TOUGH	10
       WORK,
       WORK,
       WORK,
-      WORK,
       MOVE, MOVE,
       CARRY, CARRY,
       CARRY, CARRY,
       CARRY, CARRY,
+      CARRY, CARRY,
+      CARRY,
     ];
 
 
@@ -120,7 +121,7 @@ TOUGH	10
       MOVE, MOVE,
       CARRY, CARRY,
       CARRY, CARRY,
-      CARRY,
+      CARRY, CARRY,
     ];
 
 
@@ -151,8 +152,8 @@ TOUGH	10
       WORK,
       WORK,
       WORK,
-      WORK,
       MOVE, MOVE,
+      CARRY, CARRY,
       CARRY, CARRY,
       CARRY, CARRY,
       CARRY, CARRY,
