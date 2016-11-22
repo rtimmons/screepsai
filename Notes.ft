@@ -140,6 +140,10 @@ Game.spawns['Spawn1'].createCreep(
 ```
 
 
+```
+var sites = Game.spawns['Spawn1'].room.find(FIND_CONSTRUCTION_SITES); for (k in sites) { sites[k].remove(); }
+```
+
 ```javascript
 // https://screeps.com/a/#!/sim/tutorial/3
 Game.spawns['Spawn1'].createCreep( [WORK, CARRY, MOVE], 'Builder1',

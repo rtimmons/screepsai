@@ -248,11 +248,13 @@ TOUGH	10
     var tower = this.game.getObjectById('583276ecf3a0a9785e5e5fa3');
     if (tower) {
 
-      // repair anything that can be repaired, but don't overdo it on the walls
+      // repair anything that can be repaired, but don't overdo it on the walls or ramparts
       // (they start out with millions of hits that the tower has to fill up)
       var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-          filter: (structure) => structure.hits < structure.hitsMax &&
-            (structure.structureType != 'constructedWall' || structure.hits <= 500),
+          filter: (s) => 
+            s.hits < s.hitsMax &&
+            ((s.structureType != 'constructedWall' && 
+              s.structureType != 'rampart') || s.hits <= 500),
         });
       if (closestDamagedStructure) {
         tower.repair(closestDamagedStructure);
