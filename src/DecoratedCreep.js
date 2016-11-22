@@ -152,7 +152,8 @@ class DecoratedCreep {
     // TODO: maybe distinct role for tower harvesting?
     var tower = this.closestStructureWhere(s =>
       s.structureType == STRUCTURE_TOWER &&
-      s.energy < s.energyCapacity / 2
+      s.energy < s.energyCapacity / 2 && (
+        _.size(this._targetingId(s.id)) <= 2)
     );
     if (tower) {
       return tower;
