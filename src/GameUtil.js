@@ -1,5 +1,7 @@
 var Deco = require('DecoratedCreep');
 
+const SPAWN_NAME = 'Spawn1';
+
 module.exports = {
   extend: function (clz) {
 
@@ -8,8 +10,8 @@ module.exports = {
     };
 
     clz.energyReport = function () {
-      var avail = Game.spawns['Spawn1'].room.energyAvailable;
-      var capacity = Game.spawns['Spawn1'].room.energyCapacityAvailable;
+      var avail = Game.spawns[SPAWN_NAME].room.energyAvailable;
+      var capacity = Game.spawns[SPAWN_NAME].room.energyCapacityAvailable;
 
       console.log(`Room has ${avail} available out of ${capacity}`);
     };

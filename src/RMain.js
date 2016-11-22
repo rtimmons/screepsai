@@ -91,7 +91,6 @@ TOUGH	10
       CARRY,
     ];
 
-
     var l2builder = [
       WORK,
       WORK,
@@ -123,7 +122,6 @@ TOUGH	10
       CARRY, CARRY,
       CARRY, CARRY,
     ];
-
 
     var l2upgrader = [
       WORK,
@@ -158,7 +156,6 @@ TOUGH	10
       CARRY, CARRY,
       CARRY, CARRY,
     ];
-
 
     var l1upgrader = [
       WORK, MOVE, CARRY,
@@ -201,6 +198,7 @@ TOUGH	10
         bodyParts: l4upgrader,
         level: 4,
       },
+
       // {
       //   role: 'builder',
       //   atLeast: 2,
@@ -217,6 +215,7 @@ TOUGH	10
         bodyParts: l4harvester,
         level: 4,
       },
+
       // {
       //   role: 'builder',
       //   atLeast: 3,
@@ -256,9 +255,9 @@ TOUGH	10
       // repair anything that can be repaired, but don't overdo it on the walls or ramparts
       // (they start out with millions of hits that the tower has to fill up)
       var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-          filter: (s) => 
+          filter: (s) =>
             s.hits < s.hitsMax &&
-            ((s.structureType != 'constructedWall' && 
+            ((s.structureType != 'constructedWall' &&
               s.structureType != 'rampart') || s.hits <= 1000),
         });
       if (closestDamagedStructure) {

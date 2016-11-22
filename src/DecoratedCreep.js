@@ -160,7 +160,7 @@ class DecoratedCreep {
     var tower = this.closestStructureWhere(s =>
       s.structureType == STRUCTURE_TOWER &&
       s.energy < s.energyCapacity / 2 && (
-        _.size(this._targetingId(s.id)) == 0 )
+        _.size(this._targetingId(s.id)) == 0)
     );
     if (tower) {
       return tower;
