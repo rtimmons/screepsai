@@ -29,6 +29,8 @@ class DecoratedCreep {
   }
 
   tick(time) {
+
+    // we never get here with ticksToLive == 0
     if (this.delegate.ticksToLive <= 1) {
       this._clearTarget();
     }
@@ -86,7 +88,11 @@ class DecoratedCreep {
   }
 
   _clearTarget() {
+
+    // who I'm targeting
     var targetId = this.delegate.memory.targetId;
+
+    // others also targeting targetId
     var targeting = this._targetingId(targetId);
 
     delete targeting[this.delegate.id];
