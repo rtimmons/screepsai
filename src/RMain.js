@@ -210,10 +210,11 @@ TOUGH	10
         tower.attack(closestHostile);
       }
 
-      // surplus of energy - fill up walls
+      // surplus of energy - fill up walls up to 100k
       if (tower.energy >= 2000) {
         closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-          filter: (structure) => structure.hits < structure.hitsMax,
+          filter: (structure) => structure.hits < structure.hitsMax &&
+            (structure.structureType != 'constructedWall' || structure.hits <= 100000),
         });
         if (closestDamagedStructure) {
           tower.repair(closestDamagedStructure);
