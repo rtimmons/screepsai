@@ -1,4 +1,10 @@
+if (typeof Memory === 'undefined') {
+  Memory = global.Memory;
+  _ = require('underscore');
+}
+
 // The Screeps API is pretty low-level. This raises it up a notch
+
 class DecoratedCreep {
   constructor(delegate) {
     this.delegate = delegate;

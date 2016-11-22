@@ -1,4 +1,6 @@
-var roleBuilder = require('role.builder');
+if (typeof roleBuilder === 'undefined') {
+  roleBuilder = require('role.builder');
+}
 
 var roleHarvester = {
 
