@@ -52,6 +52,7 @@ TOUGH	10
     // l1 = 300
     // l2 = 600
     // l3 = 750
+    // l4 = 1200
 
     var l1harvester = [
       WORK, MOVE, CARRY,
@@ -75,6 +76,20 @@ TOUGH	10
       CARRY, CARRY,
       CARRY,
     ];
+    var l4harvester = [
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      MOVE, MOVE,
+      CARRY, CARRY,
+      CARRY, CARRY,
+      CARRY, CARRY,
+    ];
+
 
     var l2builder = [
       WORK,
@@ -94,6 +109,20 @@ TOUGH	10
       CARRY, CARRY,
       CARRY,
     ];
+    var l4builder = [
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      MOVE, MOVE,
+      CARRY, CARRY,
+      CARRY, CARRY,
+      CARRY,
+    ];
+
 
     var l2upgrader = [
       WORK,
@@ -114,6 +143,21 @@ TOUGH	10
       CARRY, CARRY,
       CARRY,
     ];
+    var l4upgrader = [
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      WORK,
+      MOVE, MOVE,
+      CARRY, CARRY,
+      CARRY, CARRY,
+      CARRY, CARRY,
+    ];
+
 
     var l1upgrader = [
       WORK, MOVE, CARRY,
@@ -123,54 +167,54 @@ TOUGH	10
       {
         role: 'harvester',
         atLeast: 1,
-        whenAvailable: 750,
-        bodyParts: l3harvester,
+        whenAvailable: 1200,
+        bodyParts: l4harvester,
       },
       {
         role: 'upgrader',
         atLeast: 1,
-        whenAvailable: 750,
-        bodyParts: l3upgrader,
+        whenAvailable: 1200,
+        bodyParts: l4upgrader,
       },
       {
         role: 'builder',
         atLeast: 1,
-        whenAvailable: 750,
-        bodyParts: l3builder,
+        whenAvailable: 1200,
+        bodyParts: l4builder,
       },
 
       // let's get 2 of each
       {
         role: 'harvester',
         atLeast: 2,
-        whenAvailable: 750,
-        bodyParts: l3harvester,
+        whenAvailable: 1200,
+        bodyParts: l4harvester,
       },
       {
         role: 'upgrader',
         atLeast: 2,
-        whenAvailable: 750,
-        bodyParts: l3upgrader,
+        whenAvailable: 1200,
+        bodyParts: l4upgrader,
       },
       {
         role: 'builder',
         atLeast: 2,
-        whenAvailable: 750,
-        bodyParts: l3builder,
+        whenAvailable: 1200,
+        bodyParts: l4builder,
       },
 
       // if we have base levels, then more
       {
         role: 'harvester',
         atLeast: 3,
-        whenAvailable: 750,
-        bodyParts: l3harvester,
+        whenAvailable: 1200,
+        bodyParts: l4harvester,
       },
       {
         role: 'builder',
         atLeast: 3,
-        whenAvailable: 750,
-        bodyParts: l3builder,
+        whenAvailable: 1200,
+        bodyParts: l4builder,
       },
 
       // last in precedence - just keep on building upgraders
@@ -178,8 +222,8 @@ TOUGH	10
       {
         role: 'upgrader',
         atLeast: 5,
-        whenAvailable: 750,
-        bodyParts: l3upgrader,
+        whenAvailable: 1200,
+        bodyParts: l4upgrader,
       },
     ];
 
