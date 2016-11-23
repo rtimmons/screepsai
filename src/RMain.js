@@ -245,9 +245,7 @@ TOUGH	10
 
   }
 
-  tick() {
-    this.spawn();
-
+  controlTower() {
     // TODO: move somewhere else
     // TODO: repeat for all towers?
     var tower = this.game.getObjectById('583276ecf3a0a9785e5e5fa3');
@@ -263,6 +261,7 @@ TOUGH	10
       var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
           filter: (s) =>
             s.hits < s.hitsMax &&
+            (s.structureType != 'road' || s.hits <= 2500) &&
             ((s.structureType != 'constructedWall' &&
               s.structureType != 'rampart') || s.hits <= 3000),
         });
@@ -271,7 +270,7 @@ TOUGH	10
       }
 
       // surplus of energy - fill up walls up to 100k
-      if (tower.energy >= 2000) {
+      if (tower.energy >= 900) {
         closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
           filter: (structure) => structure.hits < structure.hitsMax &&
             (structure.structureType != 'constructedWall' || structure.hits <= 100000),
@@ -280,7 +279,12 @@ TOUGH	10
           tower.repair(closestDamagedStructure);
         }
       }
-    }
+    }    
+  }
+
+  tick() {
+    this.spawn();
+    this.controlTower();
 
     for (var name in this.game.creeps) {
       var creep = this.game.creeps[name];

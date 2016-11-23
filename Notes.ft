@@ -124,6 +124,10 @@ TODO: this isn't really fleshed out...
 Game.spawns['Spawn1'].createCreep( [WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE],
     'HarvesterBig',
     { role: 'harvester' } );
+
+Game.spawns['Spawn1'].createCreep( [WORK,CARRY,MOVE],
+    undefined,
+    { role: 'harvester' } );
 ```
 
 
