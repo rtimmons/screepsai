@@ -244,9 +244,7 @@ TOUGH	10
 
   }
 
-  tick() {
-    this.spawn();
-
+  controlTower() {
     // TODO: move somewhere else
     // TODO: repeat for all towers?
     var tower = this.game.getObjectById('583276ecf3a0a9785e5e5fa3');
@@ -279,7 +277,12 @@ TOUGH	10
           tower.repair(closestDamagedStructure);
         }
       }
-    }
+    }    
+  }
+
+  tick() {
+    this.spawn();
+    this.controlTower();
 
     for (var name in this.game.creeps) {
       var creep = this.game.creeps[name];
