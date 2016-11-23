@@ -264,7 +264,7 @@ TOUGH	10
           filter: (s) =>
             s.hits < s.hitsMax &&
             ((s.structureType != 'constructedWall' &&
-              s.structureType != 'rampart') || s.hits <= 1000),
+              s.structureType != 'rampart') || s.hits <= 3000),
         });
       if (closestDamagedStructure) {
         tower.repair(closestDamagedStructure);
