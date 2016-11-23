@@ -209,3 +209,28 @@ for (var i in Game.creeps) {
 }
 
 ```
+
+
+```javascript
+// ATTACK
+
+    Game.spawns['Spawn1'].createCreep(
+      [MOVE,CARRY,WORK],
+      undefined,
+      {role: 'harvester', level:1}
+    );
+
+    Game.spawns['Spawn1'].createCreep(
+      [MOVE,CARRY,CARRY,CARRY,WORK,WORK],
+      undefined,
+      {role: 'harvester', level:1}
+    );
+
+
+    Game.spawns['Spawn1'].createCreep(
+      [MOVE,MOVE,ATTACK,ATTACK,ATTACK,ATTACK,TOUGH,TOUGH],
+      'Attack1',
+      {role: 'infantry', level:2}
+    );
+
+```

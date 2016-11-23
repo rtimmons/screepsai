@@ -1,6 +1,7 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
+var roleInfantry = require('role.infantry');
 
 var DecoratedCreep = require('DecoratedCreep');
 var RGame = require('RGame');
@@ -252,6 +253,11 @@ TOUGH	10
     var tower = this.game.getObjectById('583276ecf3a0a9785e5e5fa3');
     if (tower) {
 
+      var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+      if (closestHostile) {
+        tower.attack(closestHostile);
+      }
+
       // repair anything that can be repaired, but don't overdo it on the walls or ramparts
       // (they start out with millions of hits that the tower has to fill up)
       var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -262,11 +268,6 @@ TOUGH	10
         });
       if (closestDamagedStructure) {
         tower.repair(closestDamagedStructure);
-      }
-
-      var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-      if (closestHostile) {
-        tower.attack(closestHostile);
       }
 
       // surplus of energy - fill up walls up to 100k
@@ -296,6 +297,10 @@ TOUGH	10
 
       if (creep.memory.role == 'builder') {
         roleBuilder.run(deco);
+      }
+
+      if (creep.memory.role == 'infantry') {
+        roleInfantry.run(deco);
       }
     }
   }

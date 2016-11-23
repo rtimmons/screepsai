@@ -2,7 +2,7 @@ var RMain = require('RMain');
 var GameUtil = require('GameUtil');
 var DecoratedCreep = require('DecoratedCreep');
 
-deco = function (name) {
+global.deco = function (name) {
   return Game.creeps[name].deco();
 };
 
