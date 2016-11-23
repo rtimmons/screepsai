@@ -255,6 +255,7 @@ TOUGH	10
       var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
           filter: (s) =>
             s.hits < s.hitsMax &&
+            (s.structureType != 'road' || s.hits <= 2500) &&
             ((s.structureType != 'constructedWall' &&
               s.structureType != 'rampart') || s.hits <= 1000),
         });
@@ -268,7 +269,7 @@ TOUGH	10
       }
 
       // surplus of energy - fill up walls up to 100k
-      if (tower.energy >= 2000) {
+      if (tower.energy >= 900) {
         closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
           filter: (structure) => structure.hits < structure.hitsMax &&
             (structure.structureType != 'constructedWall' || structure.hits <= 100000),
