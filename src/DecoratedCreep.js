@@ -169,8 +169,7 @@ class DecoratedCreep {
     var target = this.closestStructureWhere((structure) =>
         (structure.structureType == STRUCTURE_EXTENSION ||
          structure.structure     == STRUCTURE_CONTROLLER ||
-         structure.structureType == STRUCTURE_SPAWN ||
-         structure.structureType == STRUCTURE_TOWER)
+         structure.structureType == STRUCTURE_SPAWN)
         && structure.energy < structure.energyCapacity
         && (
           _.size(this._targetingId(structure.id)) <=
