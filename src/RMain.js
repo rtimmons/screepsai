@@ -217,19 +217,19 @@ TOUGH	10
         level: 4,
       },
 
-      // {
-      //   role: 'builder',
-      //   atLeast: 3,
-      //   whenAvailable: 1200,
-      //   bodyParts: l4builder,
-      //   level: 4,
-      // },
+      {
+        role: 'builder',
+        atLeast: 3,
+        whenAvailable: 1200,
+        bodyParts: l4builder,
+        level: 4,
+      },
 
       // last in precedence - just keep on building upgraders
       // as long as we ahve enough builders and harvesters
       {
         role: 'upgrader',
-        atLeast: 5,
+        atLeast: 3,
         whenAvailable: 1200,
         bodyParts: l4upgrader,
         level: 4,
