@@ -245,10 +245,10 @@ TOUGH	10
 
   }
 
-  controlTower() {
+  controlTower(towerId) {
     // TODO: move somewhere else
     // TODO: repeat for all towers?
-    var tower = this.game.getObjectById('583276ecf3a0a9785e5e5fa3');
+    var tower = this.game.getObjectById(towerId);
     if (tower) {
 
       var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
@@ -284,7 +284,8 @@ TOUGH	10
 
   tick() {
     this.spawn();
-    this.controlTower();
+    this.controlTower('583276ecf3a0a9785e5e5fa3');
+    this.controlTower('58370345a19b6bfd464d5f97');
 
     for (var name in this.game.creeps) {
       var creep = this.game.creeps[name];
