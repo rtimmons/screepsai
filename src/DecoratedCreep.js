@@ -183,6 +183,8 @@ class DecoratedCreep {
       );
     }
 
+    // TODO: else deposit into controller
+
     return target;
   }
 
