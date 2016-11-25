@@ -279,7 +279,7 @@ TOUGH	10
           tower.repair(closestDamagedStructure);
         }
       }
-    }    
+    }
   }
 
   tick() {
