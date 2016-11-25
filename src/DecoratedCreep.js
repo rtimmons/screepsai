@@ -213,10 +213,11 @@ class DecoratedCreep {
     if (!target) {
       return false;
     }
-    
+
     if (this.delegate.attack(target) == ERR_NOT_IN_RANGE) {
       this.delegate.moveTo(target);
     }
+
     return true;
   }
 
