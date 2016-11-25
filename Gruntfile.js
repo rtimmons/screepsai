@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       options: {
         email: grunt.file.read('./secret-email.txt').trim(),
         password: grunt.file.read('./secret-password.txt').trim(),
-        branch: 'default',
+        branch: grunt.file.read('./secret-branch.txt').trim(),
         ptr: false
       },
       dist: {
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
             config: ".jscsrc",
 
             // Autofix code style violations when possible.
-            fix: true, 
+            fix: true,
         }
     }
   });
