@@ -5,11 +5,6 @@ var memoryProto = require('Memory.proto');
 
 var RMain = require('RMain');
 var GameUtil = require('GameUtil');
-var DecoratedCreep = require('DecoratedCreep');
-
-global.deco = function (name) {
-  return Game.creeps[name].deco();
-};
 
 module.exports.loop = function () {
 
@@ -17,10 +12,6 @@ module.exports.loop = function () {
     Object.assign(Room.prototype, roomProto);
     Object.assign(RoomPosition.prototype, roomPositionProto);
     Object.assign(Memory, memoryProto);
-
-    Creep.prototype.deco = function () {
-      return new DecoratedCreep(this);
-    };
 
     GameUtil.extend(Game);
 

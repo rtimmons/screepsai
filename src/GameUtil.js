@@ -1,13 +1,7 @@
-var Deco = require('DecoratedCreep');
-
 const SPAWN_NAME = 'Spawn1';
 
 module.exports = {
   extend: function (clz) {
-
-    clz.deco = function (creepName) {
-      return new Deco(Game.creeps[creepName]);
-    };
 
     clz.energyReport = function () {
       var avail = Game.spawns[SPAWN_NAME].room.energyAvailable;
@@ -21,7 +15,7 @@ module.exports = {
       var structuresById = {};
 
       for (var k in Game.creeps) {
-        var deco = this.deco(k);
+        var deco = Game.creeps[k];
         var targetId = deco.getTargetId();
         var str = `${k}(${deco.getRole()}/${deco.getMode()}!${deco.ttl()}) => `;
         if (targetId) {

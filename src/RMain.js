@@ -3,7 +3,6 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleInfantry = require('role.infantry');
 
-var DecoratedCreep = require('DecoratedCreep');
 var RGame = require('RGame');
 
 class RMain {
@@ -279,7 +278,7 @@ TOUGH	10
           tower.repair(closestDamagedStructure);
         }
       }
-    }    
+    }
   }
 
   tick() {
@@ -289,23 +288,22 @@ TOUGH	10
 
     for (var name in this.game.creeps) {
       var creep = this.game.creeps[name];
-      var deco = new DecoratedCreep(creep);
-      deco.tick(Game.time);
+      creep.tick(Game.time);
 
       if (creep.memory.role == 'harvester') {
-        roleHarvester.run(deco);
+        roleHarvester.run(creep);
       }
 
       if (creep.memory.role == 'upgrader') {
-        roleUpgrader.run(deco);
+        roleUpgrader.run(creep);
       }
 
       if (creep.memory.role == 'builder') {
-        roleBuilder.run(deco);
+        roleBuilder.run(creep);
       }
 
       if (creep.memory.role == 'infantry') {
-        roleInfantry.run(deco);
+        roleInfantry.run(creep);
       }
     }
   }
