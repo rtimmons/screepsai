@@ -12,7 +12,7 @@ var listeners = [
   require('ontick.controlCreeps'),
 ];
 
-var Config = require('Config');
+var Config = require('Config').class;
 var TickContext = require('TickContext');
 
 function loop() {

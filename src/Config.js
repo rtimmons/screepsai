@@ -8,6 +8,10 @@ const BASE = {
   ],
 };
 
+function _get(key, memory) {
+  return memory.config[key] || BASE[key];
+}
+
 class Config {
   constructor(memory) {
     this.memory = memory;
@@ -15,8 +19,11 @@ class Config {
   }
 
   get(key) {
-    return this.memory.config[key] || BASE[key];
+    return _get(key, this.memory);
   }
 }
 
-module.exports = Config;
+module.exports = {
+  class: Config,
+  get: _get,
+};
