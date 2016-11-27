@@ -9,11 +9,25 @@ module.exports = {
     return out;
   },
 
-  energyReport(spawnName) {
-    var avail = Game.spawns[spawnName].room.energyAvailable;
-    var capacity = Game.spawns[spawnName].room.energyCapacityAvailable;
+  eachSpawn(onSpawn) {
+    var out = [];
+    for(var name in Game.spawns) {
+      var spawn = Game.spawns[name];
+      var result = onSpawn(spawn);
+      out.push(result);
+    }
+    return out;
+  },
 
-    console.log(`Room has ${avail} available out of ${capacity}`);
+  energyReport() {
+    var report = Game.eachSpawn(s => {
+      var avail = s.room.energyAvailable;
+      var capacity = s.room.energyCapacityAvailable;
+      return `Spawn ${s.name}: room ${s.room.name} has ${avail} available out of ${capacity}`;
+    })
+
+
+    console.log(report.join('\n'));
   },
 
   targetReport() {
