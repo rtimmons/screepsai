@@ -83,9 +83,7 @@ class DecoratedCreep {
   }
 
   _targetingId(id) {
-    Memory.targeting = Memory.targeting || {};
-    Memory.targeting[id] = Memory.targeting[id] || {};
-    return Memory.targeting[id];
+    return Memory.targetingId(id);
   }
 
   _clearTarget() {
