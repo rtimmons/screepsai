@@ -27,11 +27,11 @@ class DecoratedCreep {
   }
 
   harvestFromBestSource() {
-    this.moveAndDo(this.bestSource(), 'harvest');
+    return this.delegate.harvestFromBestSource();
   }
 
   upgradeRoomController() {
-    this.moveAndDo(this.delegate.room.controller, 'upgradeController');
+    return this.delegate.upgradeRoomController();
   }
 
   // delegate-only methods

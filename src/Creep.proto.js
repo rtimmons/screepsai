@@ -209,6 +209,14 @@ module.exports = {
     return false;
   },
 
+  harvestFromBestSource() {
+    return this.moveAndDo(this.bestSource(), 'harvest');
+  },
+
+  upgradeRoomController() {
+    return this.moveAndDo(this.room.controller, 'upgradeController');
+  },
+
   bestEnergyDeposit() {
     // we want to keep towers full first
     // TODO: maybe distinct role for tower harvesting?
