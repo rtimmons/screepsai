@@ -91,11 +91,7 @@ class DecoratedCreep {
   }
 
   setTarget(target) {
-    // console.log(`${this.delegate.name} setting target to ${target.structureType}`);
-    this._clearTarget();
-    this.delegate.memory.targetId = target.id;
-
-    this._targetingId(target.id)[this.delegate.id] = 1;
+    return this.delegate.setTarget(target);
   }
 
   getTargetId() {

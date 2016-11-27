@@ -56,6 +56,13 @@ module.exports = {
     Memory.removeTarget(this.id, targetId);
 
     delete this.memory.targetId;
-  }
+  },
 
+  setTarget(target) {
+    // console.log(`${this.name} setting target to ${target.structureType}`);
+    this.clearTarget();
+    this.memory.targetId = target.id;
+
+    Memory.targetingId(target.id)[this.id] = 1;
+  }
 };
