@@ -11,9 +11,7 @@ class DecoratedCreep {
   }
 
   setRoleMode(role, mode) {
-    this.setRole(role);
-    this.setMode(mode);
-    this.delegate.say(`${role}/${mode}`);
+    return this.delegate.setRoleMode(role, mode);
   }
 
   ttl() {

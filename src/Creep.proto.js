@@ -21,6 +21,12 @@ module.exports = {
     return this.mode() === mode;
   },
 
+  setRoleMode(role, mode) {
+    this.setRole(role);
+    this.setMode(mode);
+    this.say(`${role}/${mode}`);
+  },
+
   inspect() {
     return JSON.stringify(this.memory);
   },
