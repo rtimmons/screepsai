@@ -91,13 +91,7 @@ class DecoratedCreep {
     // who I'm targeting
     var targetId = this.delegate.memory.targetId;
 
-    // others also targeting targetId
-    var targeting = this._targetingId(targetId);
-
-    delete targeting[this.delegate.id];
-    if (_.size(Memory.targeting[targetId]) == 0) {
-      delete Memory.targeting[targetId];
-    }
+    Memory.removeTarget(this.delegate.id, targetId);
 
     delete this.delegate.memory.targetId;
   }
