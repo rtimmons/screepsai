@@ -15,36 +15,7 @@ class DecoratedCreep {
   }
 
   attackBestEnemy() {
-    var target;
-
-    // try setting to existing target, if any
-    var existingTargetId = this.getTargetId();
-    if (existingTargetId) {
-      target = Game.getObjectById(existingTargetId);
-      if (!target) {
-        this._clearTarget();
-        return false;
-      }
-    }
-
-    // try finding hostile
-    if (!target) {
-      target = this.delegate.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-      if (target) {
-        this.setTarget(target);
-      }
-    }
-
-    // no existing target, no hostile
-    if (!target) {
-      return false;
-    }
-
-    if (this.delegate.attack(target) == ERR_NOT_IN_RANGE) {
-      this.delegate.moveTo(target);
-    }
-
-    return true;
+    return this.delegate.attackBestEnemy();
   }
 
   depositToBestEnergyDeposit() {

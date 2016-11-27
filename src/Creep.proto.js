@@ -140,6 +140,39 @@ module.exports = {
     Memory.targetingId(target.id)[this.id] = 1;
   },
 
+  attackBestEnemy() {
+    var target;
+
+    // try setting to existing target, if any
+    var existingTargetId = this.getTargetId();
+    if (existingTargetId) {
+      target = Game.getObjectById(existingTargetId);
+      if (!target) {
+        this.clearTarget();
+        return false;
+      }
+    }
+
+    // try finding hostile
+    if (!target) {
+      target = this.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+      if (target) {
+        this.setTarget(target);
+      }
+    }
+
+    // no existing target, no hostile
+    if (!target) {
+      return false;
+    }
+
+    if (this.attack(target) == ERR_NOT_IN_RANGE) {
+      this.moveTo(target);
+    }
+
+    return true;
+  },
+
   bestEnergyDeposit() {
     // we want to keep towers full first
     // TODO: maybe distinct role for tower harvesting?
