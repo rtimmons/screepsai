@@ -35,7 +35,7 @@ module.exports = {
     }
   },
 
-  onTick(context) {
+  onTick(context, config) {
 
     /*
 Body part	Build cost	Effect per one body part

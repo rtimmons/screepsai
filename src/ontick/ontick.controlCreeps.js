@@ -5,7 +5,7 @@ var roleInfantry = require('role.infantry');
 
 module.exports = {
 
-  onTick(context) {
+  onTick(context, config) {
     Game.eachCreep(creep => {
 
       creep.tick(context.time());
