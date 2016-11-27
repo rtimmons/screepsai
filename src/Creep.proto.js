@@ -138,5 +138,39 @@ module.exports = {
     this.memory.targetId = target.id;
 
     Memory.targetingId(target.id)[this.id] = 1;
-  }
+  },
+
+  bestEnergyDeposit() {
+    // we want to keep towers full first
+    // TODO: maybe distinct role for tower harvesting?
+    var tower = this.pos.closestStructureWhere(s =>
+      s.structureType == STRUCTURE_TOWER &&
+      s.energy < s.energyCapacity / 2 && (
+        _.size(Memory.targetingId(s.id)) == 0)
+    );
+    if (tower) {
+      return tower;
+    }
+
+    var target = this.pos.closestStructureWhere((structure) =>
+        (structure.structureType == STRUCTURE_EXTENSION ||
+         structure.structureType == STRUCTURE_SPAWN)
+        && structure.energy < structure.energyCapacity
+        && (
+          _.size(Memory.targetingId(structure.id)) <=
+           (structure.structureType == STRUCTURE_SPAWN) ? 3 : 1)
+    );
+    if (!target) {
+      target = this.pos.closestStructureWhere((structure) =>
+        (structure.structureType == STRUCTURE_EXTENSION ||
+         structure.structureType == STRUCTURE_SPAWN ||
+         structure.structureType == STRUCTURE_TOWER)
+        && structure.energy < structure.energyCapacity
+      );
+    }
+
+    // TODO: else deposit into controller
+
+    return target;
+  },
 };

@@ -11,38 +11,7 @@ class DecoratedCreep {
   }
 
   bestEnergyDeposit() {
-
-    // we want to keep towers full first
-    // TODO: maybe distinct role for tower harvesting?
-    var tower = this.delegate.pos.closestStructureWhere(s =>
-      s.structureType == STRUCTURE_TOWER &&
-      s.energy < s.energyCapacity / 2 && (
-        _.size(Memory.targetingId(s.id)) == 0)
-    );
-    if (tower) {
-      return tower;
-    }
-
-    var target = this.delegate.pos.closestStructureWhere((structure) =>
-        (structure.structureType == STRUCTURE_EXTENSION ||
-         structure.structureType == STRUCTURE_SPAWN)
-        && structure.energy < structure.energyCapacity
-        && (
-          _.size(Memory.targetingId(structure.id)) <=
-           (structure.structureType == STRUCTURE_SPAWN) ? 3 : 1)
-    );
-    if (!target) {
-      target = this.delegate.pos.closestStructureWhere((structure) =>
-        (structure.structureType == STRUCTURE_EXTENSION ||
-         structure.structureType == STRUCTURE_SPAWN ||
-         structure.structureType == STRUCTURE_TOWER)
-        && structure.energy < structure.energyCapacity
-      );
-    }
-
-    // TODO: else deposit into controller
-
-    return target;
+    return this.delegate.bestEnergyDeposit();
   }
 
   attackBestEnemy() {
