@@ -19,23 +19,7 @@ class DecoratedCreep {
   }
 
   depositToBestEnergyDeposit() {
-    var existingTargetId = this.getTargetId();
-    if (existingTargetId) {
-      var target = Game.getObjectById(existingTargetId);
-    }
-
-    target = target || this.bestEnergyDeposit();
-
-    if (target) {
-      this.setTarget(target);
-      this.unlessInRnage(target,
-        (creep, target) => creep.transfer(target, RESOURCE_ENERGY)
-      );
-      this._clearTarget();
-      return true;
-    }
-
-    return false;
+    return this.delegate.depositToBestEnergyDeposit();
   }
 
   bestSource() {

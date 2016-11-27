@@ -173,6 +173,27 @@ module.exports = {
     return true;
   },
 
+
+  depositToBestEnergyDeposit() {
+    var existingTargetId = this.getTargetId();
+    if (existingTargetId) {
+      var target = Game.getObjectById(existingTargetId);
+    }
+
+    target = target || this.bestEnergyDeposit();
+
+    if (target) {
+      this.setTarget(target);
+      this.unlessInRnage(target,
+        (creep, target) => creep.transfer(target, RESOURCE_ENERGY)
+      );
+      this.clearTarget();
+      return true;
+    }
+
+    return false;
+  },
+
   bestEnergyDeposit() {
     // we want to keep towers full first
     // TODO: maybe distinct role for tower harvesting?
