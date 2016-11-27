@@ -58,10 +58,6 @@ class DecoratedCreep {
     return this.delegate.modeIs(mode);
   }
 
-  _targetingId(id) {
-    return Memory.targetingId(id);
-  }
-
   _clearTarget() {
     return this.delegate.clearTarget();
   }
@@ -114,7 +110,7 @@ class DecoratedCreep {
     var tower = this.closestStructureWhere(s =>
       s.structureType == STRUCTURE_TOWER &&
       s.energy < s.energyCapacity / 2 && (
-        _.size(this._targetingId(s.id)) == 0)
+        _.size(Memory.targetingId(s.id)) == 0)
     );
     if (tower) {
       return tower;
@@ -125,7 +121,7 @@ class DecoratedCreep {
          structure.structureType == STRUCTURE_SPAWN)
         && structure.energy < structure.energyCapacity
         && (
-          _.size(this._targetingId(structure.id)) <=
+          _.size(Memory.targetingId(structure.id)) <=
            (structure.structureType == STRUCTURE_SPAWN) ? 3 : 1)
     );
     if (!target) {
@@ -198,7 +194,7 @@ class DecoratedCreep {
   bestSource() {
     var target = this.delegate.pos.findClosestByPath(
       FIND_SOURCES,
-      { filter: s => s.energy > 0 && _.size(this._targetingId(s.id)) <= 3 }
+      { filter: s => s.energy > 0 && _.size(Memory.targetingId(s.id)) <= 3 }
     );
 
     if (target) { return target; }
