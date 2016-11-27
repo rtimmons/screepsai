@@ -70,15 +70,6 @@ class DecoratedCreep {
     return this.delegate.getTargetId();
   }
 
-  structuresWhere(predicate) {
-    return this.delegate.room.structuresWhere(predicate);
-  }
-
-  // TODO: use .pos.closestStructureWhere directly
-  closestStructureWhere(predicate) {
-    return this.delegate.pos.closestStructureWhere(predicate);
-  }
-
   unlessInRnage(target, onTarget) {
     var result = onTarget(this.delegate, target);
     if (result == ERR_NOT_IN_RANGE) {
@@ -107,7 +98,7 @@ class DecoratedCreep {
 
     // we want to keep towers full first
     // TODO: maybe distinct role for tower harvesting?
-    var tower = this.closestStructureWhere(s =>
+    var tower = this.delegate.pos.closestStructureWhere(s =>
       s.structureType == STRUCTURE_TOWER &&
       s.energy < s.energyCapacity / 2 && (
         _.size(Memory.targetingId(s.id)) == 0)
@@ -116,7 +107,7 @@ class DecoratedCreep {
       return tower;
     }
 
-    var target = this.closestStructureWhere((structure) =>
+    var target = this.delegate.pos.closestStructureWhere((structure) =>
         (structure.structureType == STRUCTURE_EXTENSION ||
          structure.structureType == STRUCTURE_SPAWN)
         && structure.energy < structure.energyCapacity
@@ -125,7 +116,7 @@ class DecoratedCreep {
            (structure.structureType == STRUCTURE_SPAWN) ? 3 : 1)
     );
     if (!target) {
-      target = this.closestStructureWhere((structure) =>
+      target = this.delegate.pos.closestStructureWhere((structure) =>
         (structure.structureType == STRUCTURE_EXTENSION ||
          structure.structureType == STRUCTURE_SPAWN ||
          structure.structureType == STRUCTURE_TOWER)
