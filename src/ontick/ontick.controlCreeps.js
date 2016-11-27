@@ -3,16 +3,12 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleInfantry = require('role.infantry');
 
-class RMain {
-  constructor(params) {
-    this.memory = params.memory;
-    this.game   = params.game;
-  }
+module.exports = {
 
-  tick() {
-    for (var name in this.game.creeps) {
-      var creep = this.game.creeps[name];
-      creep.tick(Game.time);
+  onTick(context) {
+    Game.eachCreep(creep => {
+
+      creep.tick(context.time());
 
       if (creep.memory.role == 'harvester') {
         roleHarvester.run(creep);
@@ -29,8 +25,7 @@ class RMain {
       if (creep.memory.role == 'infantry') {
         roleInfantry.run(creep);
       }
-    }
-  }
-}
+    });
+  },
 
-module.exports = RMain;
+};

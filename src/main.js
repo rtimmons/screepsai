@@ -9,6 +9,7 @@ var gameProto   = require('Game.proto');
 var listeners = [
   require('ontick.clearMemory'),
   require('ontick.spawn'),
+  require('ontick.controlCreeps'),
 ];
 
 var RMain = require('RMain');
@@ -27,13 +28,6 @@ module.exports.loop = function () {
     var context = new TickContext({
       time: Game.time,
     });
-
-    var rmain = new RMain({
-      game: Game,
-      memory: Memory,
-    });
-    rmain.tick();
-
 
     listeners.forEach(l => l.onTick(context));
 };

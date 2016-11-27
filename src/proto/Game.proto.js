@@ -1,6 +1,16 @@
 const SPAWN_NAME = 'Spawn1';
 
 module.exports = {
+  eachCreep(onCreep) {
+    var out = [];
+    for(var name in Game.creeps) {
+      var creep = Game.creeps[name];
+      var result = onCreep(creep, name);
+      out.push(result);
+    }
+    return out;
+  },
+
   energyReport() {
     var avail = Game.spawns[SPAWN_NAME].room.energyAvailable;
     var capacity = Game.spawns[SPAWN_NAME].room.energyCapacityAvailable;
