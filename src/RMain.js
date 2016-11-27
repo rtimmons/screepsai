@@ -249,35 +249,7 @@ TOUGH	10
     // TODO: repeat for all towers?
     var tower = this.game.getObjectById(towerId);
     if (tower) {
-
-      var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-      if (closestHostile) {
-        tower.attack(closestHostile);
-      }
-
-      // repair anything that can be repaired, but don't overdo it on the walls or ramparts
-      // (they start out with millions of hits that the tower has to fill up)
-      var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-          filter: (s) =>
-            s.hits < s.hitsMax &&
-            (s.structureType != 'road' || s.hits <= 2500) &&
-            ((s.structureType != 'constructedWall' &&
-              s.structureType != 'rampart') || s.hits <= 3000),
-        });
-      if (closestDamagedStructure) {
-        tower.repair(closestDamagedStructure);
-      }
-
-      // surplus of energy - fill up walls up to 100k
-      if (tower.energy >= 900) {
-        closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-          filter: (structure) => structure.hits < structure.hitsMax &&
-            (structure.structureType != 'constructedWall' || structure.hits <= 100000),
-        });
-        if (closestDamagedStructure) {
-          tower.repair(closestDamagedStructure);
-        }
-      }
+      tower.onTick(Game.time);
     }
   }
 
