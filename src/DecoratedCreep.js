@@ -93,7 +93,7 @@ class DecoratedCreep {
   }
 
   getTargetId() {
-    return this.delegate.memory.targetId;
+    return this.delegate.getTargetId();
   }
 
   structuresWhere(predicate) {

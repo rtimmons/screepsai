@@ -55,6 +55,10 @@ module.exports = {
     return this.carry.energy <= 0;
   },
 
+  getTargetId() {
+    return this.memory.targetId;
+  },
+
   clearTarget() {
     // who I'm targeting
     var targetId = this.memory.targetId;
