@@ -3,13 +3,10 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleInfantry = require('role.infantry');
 
-var RGame = require('RGame');
-
 class RMain {
   constructor(params) {
     this.memory = params.memory;
     this.game   = params.game;
-    this.rgame  = new RGame({ game: Game });
   }
 
   spawn() {
@@ -236,7 +233,7 @@ TOUGH	10
     ];
 
     ensure.forEach((e) => {
-      this.rgame.ensureCreepCount(e);
+      Game.ensureCreepCount(e);
     });
 
     // To kill: Game.creeps['Harvester1'].suicide()
