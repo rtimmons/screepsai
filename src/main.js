@@ -12,7 +12,6 @@ var listeners = [
   require('ontick.controlCreeps'),
 ];
 
-var RMain = require('RMain');
 var TickContext = require('TickContext');
 
 module.exports.loop = function () {

@@ -1,4 +1,40 @@
+const SPAWN_NAME = 'Spawn1';
+
 module.exports = {
+
+  // http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#createCreep
+  // https://screeps.com/a/#!/sim/tutorial/4
+
+  // this
+
+  ensureCreepCount(budget, params) {
+    if (budget < params.whenAvailable) {
+      // console.log('Not enough energy to spawn ' + JSON.stringify(params));
+      return;
+    }
+
+    // TODO: use deco here?
+    var existing = _.filter(Game.creeps, (creep) =>
+      creep.memory.role == params.role &&
+      creep.ticksToLive >= 300
+    );
+
+    // console.log(`Wanted ${params.atLeast} ${params.role}s; have ${existing.length}`);
+    if (existing.length < params.atLeast) {
+      var newName = Game.spawns[SPAWN_NAME].createCreep(
+        params.bodyParts,
+        undefined,
+        { role: params.role, level: params.level }
+      );
+      if (_.isString(newName)) {
+        console.log('Spawned ' + params.role + ': ' + newName);
+
+        // TODO: subtract by actual cost
+        return budget - params.whenAvailable;
+      }
+    }
+  },
+
   onTick(context) {
 
     /*
@@ -222,8 +258,10 @@ TOUGH	10
       },
     ];
 
+    var budget = Game.spawns[SPAWN_NAME].room.energyAvailable;
+
     ensure.forEach((e) => {
-      Game.ensureCreepCount(e);
+      budget = this.ensureCreepCount(budget, e);
     });
 
     // To kill: Game.creeps['Harvester1'].suicide()

@@ -56,42 +56,4 @@ module.exports = {
 
     console.log(report.join('\n'));
   },
-
-
-
-    // http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#createCreep
-    // https://screeps.com/a/#!/sim/tutorial/4
-
-    // this
-
-  ensureCreepCount(params) {
-    params.budget = params.budget ||
-      Game.spawns[SPAWN_NAME].room.energyAvailable;
-
-    if (params.budget < params.whenAvailable) {
-      // console.log('Not enough energy to spawn ' + JSON.stringify(params));
-      return;
-    }
-
-    // TODO: use deco here?
-    var existing = _.filter(Game.creeps, (creep) =>
-      creep.memory.role == params.role &&
-      creep.ticksToLive >= 300
-    );
-
-    // console.log(`Wanted ${params.atLeast} ${params.role}s; have ${existing.length}`);
-    if (existing.length < params.atLeast) {
-      var newName = Game.spawns[SPAWN_NAME].createCreep(
-        params.bodyParts,
-        undefined,
-        { role: params.role, level: params.level }
-      );
-      if (_.isString(newName)) {
-        console.log('Spawned ' + params.role + ': ' + newName);
-
-        // TODO: subtract by actual cost
-        params.budget = params.budget - params.whenAvailable;
-      }
-    }
-  },
 };
