@@ -10,6 +10,7 @@ var listeners = [
   require('ontick.clearMemory'),
   require('ontick.spawn'),
   require('ontick.controlCreeps'),
+  require('ontick.controlTowers'),
 ];
 
 var Config = require('Config').class;
