@@ -23,19 +23,7 @@ class DecoratedCreep {
   }
 
   bestSource() {
-    var target = this.delegate.pos.findClosestByPath(
-      FIND_SOURCES,
-      { filter: s => s.energy > 0 && _.size(Memory.targetingId(s.id)) <= 3 }
-    );
-
-    if (target) { return target; }
-
-    var orElse = this.delegate.pos.findClosestByPath(FIND_SOURCES,
-      { filter: s => s.energy > 0 });
-    if (orElse) { return orElse; }
-
-    orElse = this.delegate.pos.findClosestByPath(FIND_SOURCES);
-    return orElse;
+    return this.delegate.bestSource();
   }
 
   harvestFromBestSource() {

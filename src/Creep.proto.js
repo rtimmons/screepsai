@@ -173,6 +173,21 @@ module.exports = {
     return true;
   },
 
+  bestSource() {
+    var target = this.pos.findClosestByPath(
+      FIND_SOURCES,
+      { filter: s => s.energy > 0 && _.size(Memory.targetingId(s.id)) <= 3 }
+    );
+
+    if (target) { return target; }
+
+    var orElse = this.pos.findClosestByPath(FIND_SOURCES,
+      { filter: s => s.energy > 0 });
+    if (orElse) { return orElse; }
+
+    orElse = this.pos.findClosestByPath(FIND_SOURCES);
+    return orElse;
+  },
 
   depositToBestEnergyDeposit() {
     var existingTargetId = this.getTargetId();
@@ -184,7 +199,7 @@ module.exports = {
 
     if (target) {
       this.setTarget(target);
-      this.unlessInRnage(target,
+      this.unlessInRange(target,
         (creep, target) => creep.transfer(target, RESOURCE_ENERGY)
       );
       this.clearTarget();
