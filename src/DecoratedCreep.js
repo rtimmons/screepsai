@@ -10,90 +10,6 @@ class DecoratedCreep {
     this.delegate = delegate;
   }
 
-  setRoleMode(role, mode) {
-    return this.delegate.setRoleMode(role, mode);
-  }
-
-  ttl() {
-    return this.delegate.ttl();
-  }
-
-  toString() {
-    return this.delegate.toString();
-  }
-
-  getTargetingDescription() {
-    return this.delegate.getTargetingDescription();
-  }
-
-  tick(time) {
-    return this.delegate.tick();
-  }
-
-  getRole() {
-    return this.delegate.getRole();
-  }
-
-  role() {
-    return this.delegate.role();
-  }
-
-  setRole(role) {
-    return this.delegate.setRole(role);
-  }
-
-  mode() {
-    return this.delegate.mode();
-  }
-
-  getMode() {
-    return this.delegate.getMode();
-  }
-
-  setMode(mode) {
-    return this.delegate.setMode(mode);
-  }
-
-  modeIs(mode) {
-    return this.delegate.modeIs(mode);
-  }
-
-  _clearTarget() {
-    return this.delegate.clearTarget();
-  }
-
-  setTarget(target) {
-    return this.delegate.setTarget(target);
-  }
-
-  getTargetId() {
-    return this.delegate.getTargetId();
-  }
-
-  unlessInRnage(target, onTarget) {
-    var result = onTarget(this.delegate, target);
-    if (result == ERR_NOT_IN_RANGE) {
-      this.setTarget(target);
-      this.delegate.moveTo(target);
-    }
-  }
-
-  moveAndDo(target, action) {
-    return this.delegate.moveAndDo(target, action);
-  }
-
-  inspect() {
-    return this.delegate.inspect();
-  }
-
-  hasEnergyCapacity() {
-    return this.delegate.hasEnergyCapacity();
-  }
-
-  currentRoomController() {
-    return this.delegate.currentRoomController();
-  }
-
   bestEnergyDeposit() {
 
     // we want to keep towers full first
@@ -206,6 +122,8 @@ class DecoratedCreep {
     this.moveAndDo(this.delegate.room.controller, 'upgradeController');
   }
 
+  // delegate-only methods
+
   bestConstructionSite() {
     return this.delegate.bestConstructionSite();
   }
@@ -220,6 +138,86 @@ class DecoratedCreep {
 
   energyDrained() {
     return this.delegate.energyDrained();
+  }
+
+  setRoleMode(role, mode) {
+    return this.delegate.setRoleMode(role, mode);
+  }
+
+  ttl() {
+    return this.delegate.ttl();
+  }
+
+  toString() {
+    return this.delegate.toString();
+  }
+
+  getTargetingDescription() {
+    return this.delegate.getTargetingDescription();
+  }
+
+  tick(time) {
+    return this.delegate.tick();
+  }
+
+  getRole() {
+    return this.delegate.getRole();
+  }
+
+  role() {
+    return this.delegate.role();
+  }
+
+  setRole(role) {
+    return this.delegate.setRole(role);
+  }
+
+  mode() {
+    return this.delegate.mode();
+  }
+
+  getMode() {
+    return this.delegate.getMode();
+  }
+
+  setMode(mode) {
+    return this.delegate.setMode(mode);
+  }
+
+  modeIs(mode) {
+    return this.delegate.modeIs(mode);
+  }
+
+  _clearTarget() {
+    return this.delegate.clearTarget();
+  }
+
+  setTarget(target) {
+    return this.delegate.setTarget(target);
+  }
+
+  getTargetId() {
+    return this.delegate.getTargetId();
+  }
+
+  unlessInRnage(target, onTarget) {
+    return this.delegate.unlessInRange(target, onTarget);
+  }
+
+  moveAndDo(target, action) {
+    return this.delegate.moveAndDo(target, action);
+  }
+
+  inspect() {
+    return this.delegate.inspect();
+  }
+
+  hasEnergyCapacity() {
+    return this.delegate.hasEnergyCapacity();
+  }
+
+  currentRoomController() {
+    return this.delegate.currentRoomController();
   }
 
 }

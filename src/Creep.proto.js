@@ -115,6 +115,14 @@ module.exports = {
     delete this.memory.targetId;
   },
 
+  unlessInRange(target, onTarget) {
+    var result = onTarget(this, target);
+    if (result == ERR_NOT_IN_RANGE) {
+      this.setTarget(target);
+      this.moveTo(target);
+    }
+  },
+
   moveAndDo(target, action) {
     var out = this[action](target);
 
