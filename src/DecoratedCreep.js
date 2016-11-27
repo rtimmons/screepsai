@@ -51,13 +51,7 @@ class DecoratedCreep {
   }
 
   setMode(mode) {
-    if (this.delegate.memory.mode == mode) {
-      return;
-    }
-
-    this._clearTarget();
-    this.delegate.memory.mode = mode;
-    this.delegate.say(mode);
+    return this.delegate.setMode(mode);
   }
 
   modeIs(mode) {

@@ -41,6 +41,16 @@ module.exports = {
     this.say(role);
   },
 
+  setMode(mode) {
+    if (this.memory.mode == mode) {
+      return;
+    }
+
+    this.clearTarget();
+    this.memory.mode = mode;
+    this.say(mode);
+  },
+
   inspect() {
     return JSON.stringify(this.memory);
   },
