@@ -23,13 +23,7 @@ class DecoratedCreep {
   }
 
   getTargetingDescription() {
-    var targetId = this.getTargetId();
-    if (!targetId) { return 'none'; }
-
-    var target = Game.getObjectById(targetId);
-    if (!target) { return '<dne>'; }
-
-    return `${target.structureType} (${targetId})`;
+    return this.delegate.getTargetingDescription();
   }
 
   tick(time) {

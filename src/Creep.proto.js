@@ -59,6 +59,16 @@ module.exports = {
     return this.memory.targetId;
   },
 
+  getTargetingDescription() {
+    var targetId = this.getTargetId();
+    if (!targetId) { return 'none'; }
+
+    var target = Game.getObjectById(targetId);
+    if (!target) { return '<dne>'; }
+
+    return `${target.structureType} (${targetId})`;
+  },
+
   clearTarget() {
     // who I'm targeting
     var targetId = this.memory.targetId;
