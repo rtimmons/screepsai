@@ -1,6 +1,10 @@
 
 module.exports = {
 
+  ttl() {
+    return this.ticksToLive;
+  },
+
   role() {
     return this.memory.role;
   },
@@ -67,6 +71,10 @@ module.exports = {
     if (!target) { return '<dne>'; }
 
     return `${target.structureType} (${targetId})`;
+  },
+
+  toString() {
+    return `${this.getRole()}/${this.getMode()}!${this.ttl()} -> ${this.getTargetingDescription()}`;
   },
 
   clearTarget() {

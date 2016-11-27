@@ -15,11 +15,11 @@ class DecoratedCreep {
   }
 
   ttl() {
-    return this.delegate.ticksToLive;
+    return this.delegate.ttl();
   }
 
   toString() {
-    return `${this.getRole()}/${this.getMode()}!${this.ttl()} -> ${this.getTargetingDescription()}`;
+    return this.delegate.toString();
   }
 
   getTargetingDescription() {
