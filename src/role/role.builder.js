@@ -1,5 +1,6 @@
 var roleBuilder = {
-  run: function (deco) {
+
+  run(deco) {
     if (deco.energyDrained()) {
       deco.setMode('harvesting');
     } else if (deco.modeIs('building')) {

@@ -1,4 +1,5 @@
 var roleUpgrader = {
+
   run(deco) {
     if (!deco.modeIs('harvesting') && deco.energyDrained()) {
       deco.setMode('harvesting');
@@ -14,6 +15,7 @@ var roleUpgrader = {
       deco.moveAndDo(deco.bestSource(), 'harvest');
     }
   },
+
 };
 
 module.exports = roleUpgrader;

@@ -1,5 +1,5 @@
 var roleInfantry = {
-  run: function (deco) {
+  run(deco) {
 
     if (deco.attackBestEnemy()) {
       deco.setMode('attacking');
