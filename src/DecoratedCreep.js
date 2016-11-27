@@ -117,11 +117,12 @@ class DecoratedCreep {
   }
 
   structuresWhere(predicate) {
-    return this.delegate.room.find(FIND_STRUCTURES, { filter: predicate });
+    return this.delegate.room.structuresWhere(predicate);
   }
 
+  // TODO: use .pos.closestStructureWhere directly
   closestStructureWhere(predicate) {
-    return this.delegate.pos.findClosestByPath(FIND_STRUCTURES, { filter: predicate });
+    return this.delegate.pos.closestStructureWhere(predicate);
   }
 
   unlessInRnage(target, onTarget) {

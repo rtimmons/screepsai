@@ -1,3 +1,6 @@
+var creepProto = require('Creep.proto');
+var roomProto  = require('Room.proto');
+
 var RMain = require('RMain');
 var GameUtil = require('GameUtil');
 var DecoratedCreep = require('DecoratedCreep');
@@ -7,6 +10,9 @@ global.deco = function (name) {
 };
 
 module.exports.loop = function () {
+
+    Object.assign(Creep.prototype, creepProto);
+    Object.assign(Room.prototype, roomProto);
 
     Creep.prototype.deco = function () {
       return new DecoratedCreep(this);
