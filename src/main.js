@@ -1,18 +1,22 @@
-var RMain = require('RMain');
-var GameUtil = require('GameUtil');
-var DecoratedCreep = require('DecoratedCreep');
+var creepProto = require('Creep.proto');
+var roomProto  = require('Room.proto');
+var roomPositionProto = require('RoomPosition.proto');
+var towerProto = require('Tower.proto');
 
-global.deco = function (name) {
-  return Game.creeps[name].deco();
-};
+var memoryProto = require('Memory.proto');
+var gameProto   = require('Game.proto');
+
+var RMain = require('RMain');
 
 module.exports.loop = function () {
 
-    Creep.prototype.deco = function () {
-      return new DecoratedCreep(this);
-    };
+    Object.assign(Creep.prototype, creepProto);
+    Object.assign(Room.prototype, roomProto);
+    Object.assign(RoomPosition.prototype, roomPositionProto);
+    Object.assign(StructureTower.prototype, towerProto);
 
-    GameUtil.extend(Game);
+    Object.assign(Memory, memoryProto);
+    Object.assign(Game, gameProto);
 
     var rmain = new RMain({
       game: Game,

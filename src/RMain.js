@@ -3,7 +3,6 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleInfantry = require('role.infantry');
 
-var DecoratedCreep = require('DecoratedCreep');
 var RGame = require('RGame');
 
 class RMain {
@@ -250,36 +249,8 @@ TOUGH	10
     // TODO: repeat for all towers?
     var tower = this.game.getObjectById(towerId);
     if (tower) {
-
-      var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-      if (closestHostile) {
-        tower.attack(closestHostile);
-      }
-
-      // repair anything that can be repaired, but don't overdo it on the walls or ramparts
-      // (they start out with millions of hits that the tower has to fill up)
-      var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-          filter: (s) =>
-            s.hits < s.hitsMax &&
-            (s.structureType != 'road' || s.hits <= 2500) &&
-            ((s.structureType != 'constructedWall' &&
-              s.structureType != 'rampart') || s.hits <= 3000),
-        });
-      if (closestDamagedStructure) {
-        tower.repair(closestDamagedStructure);
-      }
-
-      // surplus of energy - fill up walls up to 100k
-      if (tower.energy >= 900) {
-        closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-          filter: (structure) => structure.hits < structure.hitsMax &&
-            (structure.structureType != 'constructedWall' || structure.hits <= 100000),
-        });
-        if (closestDamagedStructure) {
-          tower.repair(closestDamagedStructure);
-        }
-      }
-    }    
+      tower.onTick(Game.time);
+    }
   }
 
   tick() {
@@ -289,23 +260,22 @@ TOUGH	10
 
     for (var name in this.game.creeps) {
       var creep = this.game.creeps[name];
-      var deco = new DecoratedCreep(creep);
-      deco.tick(Game.time);
+      creep.tick(Game.time);
 
       if (creep.memory.role == 'harvester') {
-        roleHarvester.run(deco);
+        roleHarvester.run(creep);
       }
 
       if (creep.memory.role == 'upgrader') {
-        roleUpgrader.run(deco);
+        roleUpgrader.run(creep);
       }
 
       if (creep.memory.role == 'builder') {
-        roleBuilder.run(deco);
+        roleBuilder.run(creep);
       }
 
       if (creep.memory.role == 'infantry') {
-        roleInfantry.run(deco);
+        roleInfantry.run(creep);
       }
     }
   }
