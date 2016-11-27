@@ -8,6 +8,7 @@ var gameProto   = require('Game.proto');
 
 var listeners = [
   require('ontick.clearMemory'),
+  require('ontick.spawn'),
 ];
 
 var RMain = require('RMain');
