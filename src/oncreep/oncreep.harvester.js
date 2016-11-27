@@ -1,8 +1,10 @@
-var roleBuilder = require('role.builder');
-
 var roleHarvester = {
 
-  run(deco) {
+  onCreep(deco) {
+
+    if (!deco.roleIs('harvester')) {
+      return;
+    }
 
     if (deco.modeIs('harvesting') && deco.atEnergyCapcity()) {
       deco.setMode('depositing');
@@ -22,7 +24,7 @@ var roleHarvester = {
 
     if (deco.modeIs('depositing')) {
       if (!deco.depositToBestEnergyDeposit()) {
-        roleBuilder.run(deco);
+        // TODO: roleBuilder.run(deco);
       }
     }
   },

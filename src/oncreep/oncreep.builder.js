@@ -1,6 +1,10 @@
 var roleBuilder = {
 
-  run(deco) {
+  onCreep(deco) {
+    if (!deco.roleIs('builder')) {
+      return;
+    }
+
     if (deco.energyDrained()) {
       deco.setMode('harvesting');
     } else if (deco.modeIs('building')) {

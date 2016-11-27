@@ -25,6 +25,10 @@ module.exports = {
     return this.mode() === mode;
   },
 
+  roleIs(role) {
+    return this.role() === role;
+  },
+
   setRoleMode(role, mode) {
     this.setRole(role);
     this.setMode(mode);

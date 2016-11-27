@@ -1,6 +1,15 @@
-var roleUpgrader = {
+var roleInfantry = {
+  onCreep(deco) {
 
-  run(deco) {
+    if (!deco.roleIs('infantry')) {
+      return;
+    }
+
+    if (deco.attackBestEnemy()) {
+      deco.setMode('attacking');
+      return;
+    }
+
     if (!deco.modeIs('harvesting') && deco.energyDrained()) {
       deco.setMode('harvesting');
     }
@@ -15,7 +24,6 @@ var roleUpgrader = {
       deco.moveAndDo(deco.bestSource(), 'harvest');
     }
   },
-
 };
 
-module.exports = roleUpgrader;
+module.exports = roleInfantry;
