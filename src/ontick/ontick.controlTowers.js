@@ -9,6 +9,8 @@ module.exports = {
   },
 
   onTick(context, config) {
+    var towerIds = config.get('towerIds');
+    towers.forEach(id => this.controlTower(towerIds));
     this.controlTower('583276ecf3a0a9785e5e5fa3');
     this.controlTower('58370345a19b6bfd464d5f97');
   }
