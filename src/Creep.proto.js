@@ -31,6 +31,16 @@ module.exports = {
     this.say(`${role}/${mode}`);
   },
 
+  setRole(role) {
+    if (this.memory.role === role) {
+      return;
+    }
+
+    this.clearTarget();
+    this.memory.role = role;
+    this.say(role);
+  },
+
   inspect() {
     return JSON.stringify(this.memory);
   },

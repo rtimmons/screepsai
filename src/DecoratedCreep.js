@@ -39,13 +39,7 @@ class DecoratedCreep {
   }
 
   setRole(role) {
-    if (this.delegate.memory.role == role) {
-      return;
-    }
-
-    this._clearTarget();
-    this.delegate.memory.role = role;
-    this.delegate.say(role);
+    return this.delegate.setRole(role);
   }
 
   mode() {
