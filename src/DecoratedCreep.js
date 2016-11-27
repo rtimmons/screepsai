@@ -27,11 +27,7 @@ class DecoratedCreep {
   }
 
   tick(time) {
-
-    // we never get here with ticksToLive == 0
-    if (this.delegate.ticksToLive <= 1) {
-      this._clearTarget();
-    }
+    return this.delegate.tick();
   }
 
   getRole() {
