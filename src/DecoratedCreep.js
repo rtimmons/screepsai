@@ -267,19 +267,19 @@ class DecoratedCreep {
   }
 
   bestConstructionSite() {
-    return this.delegate.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+    return this.delegate.bestConstructionSite();
   }
 
   constructionSites() {
-    return this.delegate.room.find(FIND_CONSTRUCTION_SITES);
+    return this.delegate.constructionSites();
   }
 
   atEnergyCapcity() {
-    return this.delegate.carry.energy >= this.delegate.carryCapacity;
+    return this.delegate.atEnergyCapcity();
   }
 
   energyDrained() {
-    return this.delegate.carry.energy <= 0;
+    return this.delegate.energyDrained();
   }
 
 }

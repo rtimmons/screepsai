@@ -31,6 +31,22 @@ module.exports = {
 
   currentRoomController() {
     return this.room.controller;
-  }
+  },
+
+  constructionSites() {
+    return this.room.find(FIND_CONSTRUCTION_SITES);
+  },
+
+  bestConstructionSite() {
+    return this.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+  },
+
+  atEnergyCapcity() {
+    return this.carry.energy >= this.carryCapacity;
+  },
+
+  energyDrained() {
+    return this.carry.energy <= 0;
+  },
 
 };
