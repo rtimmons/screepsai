@@ -1,5 +1,3 @@
-const SPAWN_NAME = 'Spawn1';
-
 module.exports = {
   eachCreep(onCreep) {
     var out = [];
@@ -11,9 +9,9 @@ module.exports = {
     return out;
   },
 
-  energyReport() {
-    var avail = Game.spawns[SPAWN_NAME].room.energyAvailable;
-    var capacity = Game.spawns[SPAWN_NAME].room.energyCapacityAvailable;
+  energyReport(spawnName) {
+    var avail = Game.spawns[spawnName].room.energyAvailable;
+    var capacity = Game.spawns[spawnName].room.energyCapacityAvailable;
 
     console.log(`Room has ${avail} available out of ${capacity}`);
   },
