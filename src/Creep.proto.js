@@ -49,4 +49,13 @@ module.exports = {
     return this.carry.energy <= 0;
   },
 
+  clearTarget() {
+    // who I'm targeting
+    var targetId = this.memory.targetId;
+
+    Memory.removeTarget(this.id, targetId);
+
+    delete this.memory.targetId;
+  }
+
 };
