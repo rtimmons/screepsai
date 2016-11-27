@@ -43,11 +43,11 @@ class DecoratedCreep {
   }
 
   getRole() {
-    return this.role();
+    return this.delegate.getRole();
   }
 
   role() {
-    return this.delegate.memory.role;
+    return this.delegate.role();
   }
 
   setRole(role) {
@@ -61,11 +61,11 @@ class DecoratedCreep {
   }
 
   mode() {
-    return this.delegate.memory.mode;
+    return this.delegate.mode();
   }
 
   getMode() {
-    return this.delegate.memory.mode;
+    return this.delegate.getMode();
   }
 
   setMode(mode) {
@@ -79,7 +79,7 @@ class DecoratedCreep {
   }
 
   modeIs(mode) {
-    return this.getMode() == mode;
+    return this.delegate.modeIs(mode);
   }
 
   _targetingId(id) {
