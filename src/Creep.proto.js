@@ -19,6 +19,18 @@ module.exports = {
 
   modeIs(mode) {
     return this.mode() === mode;
+  },
+
+  inspect() {
+    return JSON.stringify(this.memory);
+  },
+
+  hasEnergyCapacity() {
+    return this.carry.energy < this.carryCapacity;
+  },
+
+  currentRoomController() {
+    return this.room.controller;
   }
 
 };

@@ -143,15 +143,15 @@ class DecoratedCreep {
   }
 
   inspect() {
-    return JSON.stringify(this.delegate.memory);
+    return this.delegate.inspect();
   }
 
   hasEnergyCapacity() {
-    return this.delegate.carry.energy < this.delegate.carryCapacity;
+    return this.delegate.hasEnergyCapacity();
   }
 
   currentRoomController() {
-    return this.delegate.room.controller;
+    return this.delegate.currentRoomController();
   }
 
   bestEnergyDeposit() {
