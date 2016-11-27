@@ -11,6 +11,7 @@ var listeners = [
 ];
 
 var RMain = require('RMain');
+var TickContext = require('TickContext');
 
 module.exports.loop = function () {
 
@@ -22,11 +23,16 @@ module.exports.loop = function () {
     Object.assign(Memory, memoryProto);
     Object.assign(Game, gameProto);
 
+    var context = new TickContext({
+      time: Game.time,
+    });
+
     var rmain = new RMain({
       game: Game,
       memory: Memory,
     });
     rmain.tick();
 
-    listeners.forEach(l => l.onTick(Game.time));
+
+    listeners.forEach(l => l.onTick(context));
 };

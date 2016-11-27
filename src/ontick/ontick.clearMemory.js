@@ -1,5 +1,5 @@
 module.exports = {
-  onTick(time) {
+  onTick(context) {
     for (var name in Memory.creeps) {
       if (!Game.creeps[name]) {
         delete Memory.creeps[name];
@@ -8,7 +8,7 @@ module.exports = {
     }
 
     // these are just cache-values so they shouldn't live too long anyway
-    if (time % 750 == 0) {
+    if (context.time() % 750 == 0) {
       Memory.targeting = {};
     }
   }
