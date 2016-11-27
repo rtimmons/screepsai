@@ -14,19 +14,20 @@ var listeners = [
 
 var TickContext = require('TickContext');
 
-module.exports.loop = function () {
+function loop() {
+  Object.assign(Creep.prototype, creepProto);
+  Object.assign(Room.prototype, roomProto);
+  Object.assign(RoomPosition.prototype, roomPositionProto);
+  Object.assign(StructureTower.prototype, towerProto);
 
-    Object.assign(Creep.prototype, creepProto);
-    Object.assign(Room.prototype, roomProto);
-    Object.assign(RoomPosition.prototype, roomPositionProto);
-    Object.assign(StructureTower.prototype, towerProto);
+  Object.assign(Memory, memoryProto);
+  Object.assign(Game, gameProto);
 
-    Object.assign(Memory, memoryProto);
-    Object.assign(Game, gameProto);
+  var context = new TickContext({
+    time: Game.time,
+  });
 
-    var context = new TickContext({
-      time: Game.time,
-    });
+  listeners.forEach(l => l.onTick(context));
+}
 
-    listeners.forEach(l => l.onTick(context));
-};
+module.exports.loop = loop;
