@@ -106,12 +106,22 @@ module.exports = {
   },
 
   clearTarget() {
+
     // who I'm targeting
     var targetId = this.memory.targetId;
 
     Memory.removeTarget(this.id, targetId);
 
     delete this.memory.targetId;
+  },
+
+  moveAndDo(target, action) {
+    var out = this[action](target);
+
+    if (out == ERR_NOT_IN_RANGE || out == ERR_NOT_ENOUGH_ENERGY) {
+      this.setTarget(target);
+      this.moveTo(target);
+    }
   },
 
   setTarget(target) {

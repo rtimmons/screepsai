@@ -92,12 +92,7 @@ class DecoratedCreep {
   }
 
   moveAndDo(target, action) {
-    var out = this.delegate[action](target);
-
-    if (out == ERR_NOT_IN_RANGE || out == ERR_NOT_ENOUGH_ENERGY) {
-      this.setTarget(target);
-      this.delegate.moveTo(target);
-    }
+    return this.delegate.moveAndDo(target, action);
   }
 
   inspect() {
