@@ -7,7 +7,7 @@ module.exports = {
 
     if (creep.energyDrained()) {
       creep.setMode('harvesting');
-    } else if (creep.modeIs('building')) {
+    } else if (creep.modeIs('building') || creep.modeIs('upgrading')) {
       if (creep.energyDrained()) {
         creep.setMode('harvesting');
       }
@@ -17,18 +17,21 @@ module.exports = {
       creep.setMode('constructing');
     }
 
-    if (creep.modeIs('constructing')) {
+    if (creep.modeIs('building')) {
       var target = creep.bestConstructionSite();
       if (target) {
         creep.moveAndDo(target, 'build');
       } else {
-        creep.setMode('building');
+        creep.setMode('upgrading');
       }
     } else if (creep.modeIs('harvesting')) {
       creep.harvestFromBestSource();
-    } else if (creep.modeIs('building')) {
+    } else if (creep.modeIs('upgrading')) {
       creep.upgradeRoomController();
-    } else { creep.setMode('harvesting'); }
+    }
+    else {
+      console.info(`Don't know how to handle ${creep} with mode ${creep.getMode()}`);
+    }
   },
 
 };
