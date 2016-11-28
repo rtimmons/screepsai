@@ -19,6 +19,16 @@ module.exports = {
     return out;
   },
 
+  eachStructure(onStructure) {
+    var out = [];
+    for(var name in Game.structures) {
+      var structure = Game.structures[name];
+      var result = onStructure(structure);
+      out.push(result);
+    }
+    return out;
+  },
+
   energyReport() {
     var report = Game.eachSpawn(s => {
       var avail = s.room.energyAvailable;
