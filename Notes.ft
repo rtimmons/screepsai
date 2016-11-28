@@ -26,10 +26,8 @@ Best viewed using [FoldingText](http://www.foldingtext.com/).
 	- Time spent with no energy sources available.
 
 - Manual intervention
-	- Give creep names indicating role, body, and instance#
 	- Realtime inspection utils
 	- Debug logging by creep name or id
-	- Realtime re-direction (changing roles/modes, etc.)
 
 - Automate construction
 	- Automatically create roads from source to spawn and RommController
@@ -44,11 +42,11 @@ Best viewed using [FoldingText](http://www.foldingtext.com/).
 	- Prioritize extensions over other construction sites
 	- Try to finish extensions fully before dedicating energy to unfinished ones
 	- Build an upgrader/harvester if all energy sources in room are depleted (and able to) to clear out sources
-	- Change `bodyType` based on room energy
 	- If controller needs upgrading (timer below 80%) any creep with `CARRY`,`WORK` does upgrade
 	- If ttl before harvesting is low, regen at spawn
 	- Something to switch roles?
 	- If no construction sites, don't spawn more builders
+	- Spawn infantry/combat if enemies
 	- Better prioritize what to spawn
 	- One low-level harvester & upgrader if no other creeps
 
@@ -59,7 +57,6 @@ Best viewed using [FoldingText](http://www.foldingtext.com/).
 
 - Code Quality
 	- Some sort of automated testing?
-	- Extend `creep.prototype` etc instead of `Deco`
 
 - When first setting up room, cache the 'best' sources
 
