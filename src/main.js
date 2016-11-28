@@ -13,6 +13,7 @@ var onTicks = [
 ];
 
 var onCreeps = [
+  require('oncreep.clearDeadTarget'),
   require('oncreep.builder'),
   require('oncreep.harvester'),
   require('oncreep.infantry'),
@@ -38,12 +39,7 @@ function loop() {
   var config = new Config(Memory);
 
   Game.eachCreep(creep => {
-
-    // TODO: should use name onTick
-    // TODO: be consistent with (context, config) params
-    creep.tick(Game.time);
-
-    onCreeps.forEach(handler => handler.onCreep(creep))
+    onCreeps.forEach(handler => handler.onCreepTick(creep, context, config))
   });
 
   onTicks.forEach(l => l.onTick(context, config));

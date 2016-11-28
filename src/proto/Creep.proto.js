@@ -101,14 +101,6 @@ module.exports = {
     return `${this.getRole()}/${this.getMode()}!${this.ttl()} -> ${this.getTargetingDescription()}`;
   },
 
-  tick(time) {
-
-    // we never get here with ticksToLive == 0
-    if (this.ticksToLive <= 1) {
-      this.clearTarget();
-    }
-  },
-
   clearTarget() {
 
     // who I'm targeting

@@ -1,5 +1,6 @@
-var roleInfantry = {
-  onCreep(deco) {
+module.exports = {
+
+  onCreepTick(deco, context, config) {
 
     if (!deco.roleIs('infantry')) {
       return;
@@ -24,6 +25,5 @@ var roleInfantry = {
       deco.moveAndDo(deco.bestSource(), 'harvest');
     }
   },
-};
 
-module.exports = roleInfantry;
+};

@@ -1,6 +1,6 @@
-var roleBuilder = {
+module.exports = {
 
-  onCreep(deco) {
+  onCreepTick(deco, context, config) {
     if (!deco.roleIs('builder')) {
       return;
     }
@@ -30,6 +30,5 @@ var roleBuilder = {
       deco.upgradeRoomController();
     } else { deco.setMode('harvesting'); }
   },
-};
 
-module.exports = roleBuilder;
+};

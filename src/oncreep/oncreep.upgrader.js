@@ -1,6 +1,6 @@
-var roleUpgrader = {
+module.exports = {
 
-  onCreep(deco) {
+  onCreepTick(deco, context, config) {
 
     if (!deco.roleIs('upgrader')) {
       return;
@@ -22,5 +22,3 @@ var roleUpgrader = {
   },
 
 };
-
-module.exports = roleUpgrader;

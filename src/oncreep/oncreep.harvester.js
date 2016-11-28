@@ -1,6 +1,6 @@
-var roleHarvester = {
+module.exports = {
 
-  onCreep(deco) {
+  onCreepTick(deco, context, config) {
 
     if (!deco.roleIs('harvester')) {
       return;
@@ -30,5 +30,3 @@ var roleHarvester = {
   },
 
 };
-
-module.exports = roleHarvester;
