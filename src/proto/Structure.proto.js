@@ -1,8 +1,8 @@
 module.exports = {
 
   typeIn() {
-    for (var arg in arguments) {
-      if (this.structureType === arg) {
+    for (var k in arguments) {
+      if (this.structureType === arguments[k]) {
         return true;
       }
     }
