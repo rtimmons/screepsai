@@ -14,7 +14,7 @@ module.exports = {
     }
 
     if (creep.modeIs('harvesting') && creep.atEnergyCapcity()) {
-      creep.setMode('constructing');
+      creep.setMode('building');
     }
 
     if (creep.modeIs('building')) {
@@ -30,7 +30,7 @@ module.exports = {
       creep.upgradeRoomController();
     }
     else {
-      console.info(`Don't know how to handle ${creep} with mode ${creep.getMode()}`);
+      console.log(`Don't know how to handle ${creep} with mode ${creep.getMode()}`);
     }
   },
 
