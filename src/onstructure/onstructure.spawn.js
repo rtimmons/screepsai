@@ -35,8 +35,7 @@ module.exports = {
     }
 
     var existing = _.filter(Game.creeps, (creep) =>
-      creep.memory.role == params.role &&
-      creep.ticksToLive >= 300
+      creep.roleIs(type.role) && creep.ttl() >= 300
     );
 
     if (existing.length >= params.atLeast) {
@@ -71,6 +70,8 @@ module.exports = {
 
     ensure.forEach((params) => {
       budget = this.ensureCreepCount(budget, structure, config, params);
+
+      // console.log(`${JSON.stringify(params)} => ${budget}`);
     });
   },
 
