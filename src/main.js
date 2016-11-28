@@ -7,7 +7,6 @@ var gameProto   = require('Game.proto');
 
 var onTicks = [
   require('ontick.clearMemory'),
-  require('ontick.spawn'),
 ];
 
 var onCreeps = [
@@ -19,6 +18,7 @@ var onCreeps = [
 ];
 
 var onStructures = [
+  require('onstructure.spawn'),
   require('onstructure.attackHostile'),
   require('onstructure.repairLightDamage'),
   require('onstructure.repairYolo'),

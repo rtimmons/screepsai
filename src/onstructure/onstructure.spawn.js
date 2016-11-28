@@ -1,5 +1,3 @@
-const SPAWN_NAME = 'Spawn1';
-
 module.exports = {
 
   // http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#createCreep
@@ -23,7 +21,7 @@ module.exports = {
     return out;
   },
 
-  ensureCreepCount(budget, config, params) {
+  ensureCreepCount(budget, spawn, config, params) {
     if (budget < params.whenAvailable) {
       // console.log('Not enough energy to spawn ' + JSON.stringify(params));
       return;
@@ -44,7 +42,7 @@ module.exports = {
     if (existing.length < params.atLeast) {
 
       // TODO: add method to Game.spawn by type
-      var newName = Game.spawns[SPAWN_NAME].createCreep(
+      var newName = spawn.createCreep(
         this.asBodyParts(type.parts),
         undefined,
         { role: type.role, level: type.level }
@@ -59,14 +57,17 @@ module.exports = {
     }
   },
 
-  onTick(context, config) {
+  onStructureTick(structure, context, config) {
+    if (!structure.createCreep) {
+      return;
+    }
 
     var ensure = config.get('ensureCreeps');
 
-    var budget = Game.spawns[SPAWN_NAME].room.energyAvailable;
+    var budget = structure.room.energyAvailable;
 
     ensure.forEach((params) => {
-      budget = this.ensureCreepCount(budget, config, params);
+      budget = this.ensureCreepCount(budget, structure, config, params);
     });
   },
 
