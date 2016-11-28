@@ -53,7 +53,12 @@ module.exports = {
           structuresById[targetId] ||
             Game.getObjectById(targetId);
 
-        str += `${structuresById[targetId].structureType} (${targetId})`;
+        var structure = structuresById[targetId];
+        var type = structure.structureType ||
+          structure instanceof StructureExtension ? 'extension' :
+          structure instanceof Source             ? 'source' :
+          '(unknown type)';
+        str += `${type} (${targetId})`;
       }
 
       report.push(str);
