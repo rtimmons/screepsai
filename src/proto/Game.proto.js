@@ -1,31 +1,34 @@
 module.exports = {
   eachCreep(onCreep) {
     var out = [];
-    for(var name in Game.creeps) {
+    for (var name in Game.creeps) {
       var creep = Game.creeps[name];
       var result = onCreep(creep, name);
       out.push(result);
     }
+
     return out;
   },
 
   eachSpawn(onSpawn) {
     var out = [];
-    for(var name in Game.spawns) {
+    for (var name in Game.spawns) {
       var spawn = Game.spawns[name];
       var result = onSpawn(spawn);
       out.push(result);
     }
+
     return out;
   },
 
   eachStructure(onStructure) {
     var out = [];
-    for(var name in Game.structures) {
+    for (var name in Game.structures) {
       var structure = Game.structures[name];
       var result = onStructure(structure);
       out.push(result);
     }
+
     return out;
   },
 
@@ -34,8 +37,7 @@ module.exports = {
       var avail = s.room.energyAvailable;
       var capacity = s.room.energyCapacityAvailable;
       return `Spawn ${s.name}: room ${s.room.name} has ${avail} available out of ${capacity}`;
-    })
-
+    });
 
     console.log(report.join('\n'));
   },

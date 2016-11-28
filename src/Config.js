@@ -97,7 +97,6 @@ TOUGH	10
     // l3 = 750
     // l4 = 1200
 
-
     l1harvester: {
       role: 'harvester',
       level: 1,

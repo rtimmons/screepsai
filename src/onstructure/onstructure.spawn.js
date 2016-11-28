@@ -13,11 +13,12 @@ module.exports = {
         CARRY: CARRY,
         ATTACK: ATTACK,
       })[k];
-      while(many > 0) {
+      while (many > 0) {
         out.push(toAdd);
         many--;
       }
     }
+
     return out;
   },
 

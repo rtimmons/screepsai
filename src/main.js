@@ -44,7 +44,7 @@ function loop() {
   var config = new Config(Memory);
 
   Game.eachCreep(creep => {
-    onCreeps.forEach(handler => handler.onCreepTick(creep, context, config))
+    onCreeps.forEach(handler => handler.onCreepTick(creep, context, config));
   });
 
   Game.eachStructure(structure => {

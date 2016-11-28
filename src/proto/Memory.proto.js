@@ -1,6 +1,7 @@
 // Not really "prototype" methods because Memory is static
 
 module.exports = {
+
   targetingId(targetId) {
     Memory.targeting = Memory.targeting || {};
     return Memory.targeting[targetId];
@@ -23,7 +24,7 @@ module.exports = {
     // others also targeting targetId
     var targeting = Memory.targetingId(targetId);
 
-    if(!targeting) {
+    if (!targeting) {
       return;
     }
 
@@ -31,5 +32,6 @@ module.exports = {
     if (Memory.targeting[targetId] && _.size(Memory.targeting[targetId]) <= 0) {
       delete Memory.targeting[targetId];
     }
-  }
+  },
+
 };

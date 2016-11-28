@@ -119,6 +119,7 @@ module.exports = {
       console.log(`Unknown action ${action}`);
       return;
     }
+
     var out = this[action](target);
 
     if (out == ERR_NOT_IN_RANGE || out == ERR_NOT_ENOUGH_ENERGY) {

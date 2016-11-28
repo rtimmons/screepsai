@@ -1,4 +1,5 @@
 module.exports = {
+
   onTick(context, config) {
     for (var name in Memory.creeps) {
       if (!Game.creeps[name]) {
@@ -11,5 +12,6 @@ module.exports = {
     if (context.time() % config.get('targetingTtlTicks') == 0) {
       Memory.targeting = {};
     }
-  }
+  },
+
 };

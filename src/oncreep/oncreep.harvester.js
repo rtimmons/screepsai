@@ -25,6 +25,7 @@ module.exports = {
     if (creep.modeIs('depositing')) {
       if (!creep.depositToBestEnergyDeposit()) {
         console.log(`Creep ${creep} cannot depositToBestEnergyDeposit`);
+
         // TODO: roleBuilder.run(creep);
       }
     }

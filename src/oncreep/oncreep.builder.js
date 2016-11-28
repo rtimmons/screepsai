@@ -28,8 +28,7 @@ module.exports = {
       creep.harvestFromBestSource();
     } else if (creep.modeIs('upgrading')) {
       creep.upgradeRoomController();
-    }
-    else {
+    } else {
       console.log(`Don't know how to handle ${creep} with mode ${creep.getMode()}`);
     }
   },
