@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         ptr: false
       },
       dist: {
-        src: ['src/*.js']
+        src: ['src/**/*.js']
       }
     },
     // Configure a mochaTest task
