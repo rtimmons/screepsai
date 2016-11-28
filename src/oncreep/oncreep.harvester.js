@@ -1,30 +1,30 @@
 module.exports = {
 
-  onCreepTick(deco, context, config) {
+  onCreepTick(creep, context, config) {
 
-    if (!deco.roleIs('harvester')) {
+    if (!creep.roleIs('harvester')) {
       return;
     }
 
-    if (deco.modeIs('harvesting') && deco.atEnergyCapcity()) {
-      deco.setMode('depositing');
+    if (creep.modeIs('harvesting') && creep.atEnergyCapcity()) {
+      creep.setMode('depositing');
     }
 
-    if (!(deco.modeIs('harvesting') || deco.modeIs('depositing')) && deco.hasEnergyCapacity()) {
-      deco.setMode('harvesting');
+    if (!(creep.modeIs('harvesting') || creep.modeIs('depositing')) && creep.hasEnergyCapacity()) {
+      creep.setMode('harvesting');
     }
 
-    if (deco.energyDrained()) {
-      deco.setMode('harvesting');
+    if (creep.energyDrained()) {
+      creep.setMode('harvesting');
     }
 
-    if (deco.modeIs('harvesting')) {
-      deco.harvestFromBestSource();
+    if (creep.modeIs('harvesting')) {
+      creep.harvestFromBestSource();
     }
 
-    if (deco.modeIs('depositing')) {
-      if (!deco.depositToBestEnergyDeposit()) {
-        // TODO: roleBuilder.run(deco);
+    if (creep.modeIs('depositing')) {
+      if (!creep.depositToBestEnergyDeposit()) {
+        // TODO: roleBuilder.run(creep);
       }
     }
   },

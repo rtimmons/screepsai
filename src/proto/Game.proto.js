@@ -45,9 +45,9 @@ module.exports = {
     var structuresById = {};
 
     for (var k in Game.creeps) {
-      var deco = Game.creeps[k];
-      var targetId = deco.getTargetId();
-      var str = `${k}(${deco.getRole()}/${deco.getMode()}!${deco.ttl()}) => `;
+      var creep = Game.creeps[k];
+      var targetId = creep.getTargetId();
+      var str = `${k}(${creep.getRole()}/${creep.getMode()}!${creep.ttl()}) => `;
       if (targetId) {
         structuresById[targetId] =
           structuresById[targetId] ||

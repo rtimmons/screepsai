@@ -1,28 +1,28 @@
 module.exports = {
 
-  onCreepTick(deco, context, config) {
+  onCreepTick(creep, context, config) {
 
-    if (!deco.roleIs('infantry')) {
+    if (!creep.roleIs('infantry')) {
       return;
     }
 
-    if (deco.attackBestEnemy()) {
-      deco.setMode('attacking');
+    if (creep.attackBestEnemy()) {
+      creep.setMode('attacking');
       return;
     }
 
-    if (!deco.modeIs('harvesting') && deco.energyDrained()) {
-      deco.setMode('harvesting');
+    if (!creep.modeIs('harvesting') && creep.energyDrained()) {
+      creep.setMode('harvesting');
     }
 
-    if (!deco.modeIs('upgrading') && deco.atEnergyCapcity()) {
-      deco.setMode('upgrading');
+    if (!creep.modeIs('upgrading') && creep.atEnergyCapcity()) {
+      creep.setMode('upgrading');
     }
 
-    if (deco.modeIs('upgrading')) {
-      deco.moveAndDo(deco.currentRoomController(), 'upgradeController');
+    if (creep.modeIs('upgrading')) {
+      creep.moveAndDo(creep.currentRoomController(), 'upgracreepntroller');
     } else {
-      deco.moveAndDo(deco.bestSource(), 'harvest');
+      creep.moveAndDo(creep.bestSource(), 'harvest');
     }
   },
 

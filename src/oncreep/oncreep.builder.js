@@ -1,34 +1,34 @@
 module.exports = {
 
-  onCreepTick(deco, context, config) {
-    if (!deco.roleIs('builder')) {
+  onCreepTick(creep, context, config) {
+    if (!creep.roleIs('builder')) {
       return;
     }
 
-    if (deco.energyDrained()) {
-      deco.setMode('harvesting');
-    } else if (deco.modeIs('building')) {
-      if (deco.energyDrained()) {
-        deco.setMode('harvesting');
+    if (creep.energyDrained()) {
+      creep.setMode('harvesting');
+    } else if (creep.modeIs('building')) {
+      if (creep.energyDrained()) {
+        creep.setMode('harvesting');
       }
     }
 
-    if (deco.modeIs('harvesting') && deco.atEnergyCapcity()) {
-      deco.setMode('constructing');
+    if (creep.modeIs('harvesting') && creep.atEnergyCapcity()) {
+      creep.setMode('constructing');
     }
 
-    if (deco.modeIs('constructing')) {
-      var target = deco.bestConstructionSite();
+    if (creep.modeIs('constructing')) {
+      var target = creep.bestConstructionSite();
       if (target) {
-        deco.moveAndDo(target, 'build');
+        creep.moveAndDo(target, 'build');
       } else {
-        deco.setMode('building');
+        creep.setMode('building');
       }
-    } else if (deco.modeIs('harvesting')) {
-      deco.harvestFromBestSource();
-    } else if (deco.modeIs('building')) {
-      deco.upgradeRoomController();
-    } else { deco.setMode('harvesting'); }
+    } else if (creep.modeIs('harvesting')) {
+      creep.harvestFromBestSource();
+    } else if (creep.modeIs('building')) {
+      creep.upgradeRoomController();
+    } else { creep.setMode('harvesting'); }
   },
 
 };
