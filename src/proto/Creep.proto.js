@@ -102,7 +102,7 @@ module.exports = {
   },
 
   clearTarget() {
-    Memory.removeTarget(this.id);
+    Memory.removeTarget(this);
   },
 
   unlessInRange(target, onTarget) {

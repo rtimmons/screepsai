@@ -11,8 +11,8 @@ module.exports = {
     Memory.targeting[targetId][creepId] = 1;
   },
 
-  removeTarget(creepId) {
-    var creepMemory = Memory.creeps[creepId];
+  removeTarget(creep) {
+    var creepMemory = Memory.creeps[creep.name];
     if (!creepMemory) {
       return;
     }
@@ -27,7 +27,7 @@ module.exports = {
       return;
     }
 
-    delete targeting[creepId];
+    delete targeting[creep.id];
     if (Memory.targeting[targetId] && _.size(Memory.targeting[targetId]) <= 0) {
       delete Memory.targeting[targetId];
     }
