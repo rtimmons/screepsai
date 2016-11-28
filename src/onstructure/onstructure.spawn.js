@@ -24,14 +24,14 @@ module.exports = {
   ensureCreepCount(budget, spawn, config, params) {
     if (budget < params.whenAvailable) {
       // console.log('Not enough energy to spawn ' + JSON.stringify(params));
-      return;
+      return budget;
     }
 
     var types = config.get('creepTypes');
     var type = types[params.key];
     if (!type) {
       console.log(`Unknown type ${type}. Maybe one of ${_.keys(types)}?`);
-      return;
+      return budget;
     }
 
     var existing = _.filter(Game.creeps, (creep) =>
@@ -39,22 +39,25 @@ module.exports = {
       creep.ticksToLive >= 300
     );
 
-    if (existing.length < params.atLeast) {
-
-      // TODO: add method to Game.spawn by type
-      var newName = spawn.createCreep(
-        this.asBodyParts(type.parts),
-        undefined,
-        { role: type.role, level: type.level }
-      );
-
-      if (_.isString(newName)) {
-        console.log('Spawned ' + type.role + ': ' + newName);
-
-        // TODO: subtract by actual cost
-        return budget - params.whenAvailable;
-      }
+    if (existing.length >= params.atLeast) {
+      return budget;
     }
+
+    // TODO: add method to Game.spawn by type
+    var newName = spawn.createCreep(
+      this.asBodyParts(type.parts),
+      undefined,
+      { role: type.role, level: type.level }
+    );
+
+    if (_.isString(newName)) {
+      console.log('Spawned ' + type.role + ': ' + newName);
+
+      // TODO: subtract by actual cost
+      budget -= params.whenAvailable;
+    }
+
+    return budget;
   },
 
   onStructureTick(structure, context, config) {
