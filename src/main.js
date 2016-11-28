@@ -1,6 +1,7 @@
 var creepProto = require('Creep.proto');
 var roomProto  = require('Room.proto');
 var roomPositionProto = require('RoomPosition.proto');
+var structureProto = require('Structure.proto');
 
 var memoryProto = require('Memory.proto');
 var gameProto   = require('Game.proto');
@@ -30,6 +31,7 @@ var TickContext = require('TickContext');
 function loop() {
 
   Object.assign(Creep.prototype, creepProto);
+  Object.assign(Structure.prototype, structureProto);
   Object.assign(Room.prototype, roomProto);
   Object.assign(RoomPosition.prototype, roomPositionProto);
 

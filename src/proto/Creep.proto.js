@@ -225,8 +225,7 @@ module.exports = {
     }
 
     var target = this.pos.closestStructureWhere((structure) =>
-        (structure.structureType == STRUCTURE_EXTENSION ||
-         structure.structureType == STRUCTURE_SPAWN)
+        structure.typeIn(STRUCTURE_EXTENSION, STRUCTURE_SPAWN)
         && structure.energy < structure.energyCapacity
         && (
           _.size(Memory.targetingId(structure.id)) <=
@@ -234,9 +233,7 @@ module.exports = {
     );
     if (!target) {
       target = this.pos.closestStructureWhere((structure) =>
-        (structure.structureType == STRUCTURE_EXTENSION ||
-         structure.structureType == STRUCTURE_SPAWN ||
-         structure.structureType == STRUCTURE_TOWER)
+        structure.typeIn(STRUCTURE_EXTENSION, STRUCTURE_SPAWN, STRUCTURE_TOWER)
         && structure.energy < structure.energyCapacity
       );
     }
