@@ -15,7 +15,7 @@ module.exports = {
     }
 
     if (creep.modeIs('upgrading')) {
-      creep.moveAndDo(creep.currentRoomController(), 'upgracreepntroller');
+      creep.moveAndDo(creep.currentRoomController(), 'upgradeController');
     } else {
       creep.moveAndDo(creep.bestSource(), 'harvest');
     }

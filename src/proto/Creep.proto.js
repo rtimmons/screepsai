@@ -102,13 +102,7 @@ module.exports = {
   },
 
   clearTarget() {
-
-    // who I'm targeting
-    var targetId = this.memory.targetId;
-
-    Memory.removeTarget(this.id, targetId);
-
-    delete this.memory.targetId;
+    Memory.removeTarget(this.id);
   },
 
   unlessInRange(target, onTarget) {
@@ -120,6 +114,11 @@ module.exports = {
   },
 
   moveAndDo(target, action) {
+    var f = this[action];
+    if (!f) {
+      console.log(`Unknown action ${action}`);
+      return;
+    }
     var out = this[action](target);
 
     if (out == ERR_NOT_IN_RANGE || out == ERR_NOT_ENOUGH_ENERGY) {
@@ -133,7 +132,7 @@ module.exports = {
     this.clearTarget();
     this.memory.targetId = target.id;
 
-    Memory.targetingId(target.id)[this.id] = 1;
+    Memory.addTarget(this.id, target.id);
   },
 
   attackBestEnemy() {
