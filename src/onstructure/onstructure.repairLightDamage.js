@@ -10,9 +10,9 @@ module.exports = {
     var closestDamagedStructure = structure.pos.findClosestByRange(FIND_STRUCTURES, {
       filter: (s) =>
         s.hits < s.hitsMax &&
-        (s.structureType != 'road' || s.hits <= 2500) &&
+        (s.structureType != 'road' || s.hits <= 2000) &&
         ((s.structureType != 'constructedWall' &&
-          s.structureType != 'rampart') || s.hits <= 3000),
+          s.structureType != 'rampart') || s.hits <= 2000),
     });
 
     if (closestDamagedStructure) {

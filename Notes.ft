@@ -125,9 +125,42 @@ Game.spawns['Spawn1'].createCreep( [WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE],
     'HarvesterBig',
     { role: 'harvester' } );
 
+// small harvester
 Game.spawns['Spawn1'].createCreep( [WORK,CARRY,MOVE],
     undefined,
     { role: 'harvester' } );
+
+// small builder
+Game.spawns['Spawn1'].createCreep( [WORK,CARRY,MOVE],
+    undefined,
+    { role: 'builder' } );
+
+
+// slightly bigger harvester
+Game.spawns['Spawn1'].createCreep( [WORK,WORK,CARRY,CARRY,MOVE,MOVE],
+    undefined,
+    { role: 'harvester' } );
+
+Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK, WORK,CARRY,MOVE,MOVE,MOVE],
+    undefined,
+    { role: 'builder', level: 2 } );
+
+Game.spawns['Spawn1'].createCreep([
+  WORK,WORK,WORK,WORK,WORK,WORK,
+  CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,
+  MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+    undefined,
+    { role: 'builder', level: 4 } );
+
+Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE],
+    undefined,
+    { role: 'builder', level: 1 } );
+
+
+
+Game.spawns['Spawn1'].createCreep( [WORK,CARRY,MOVE],
+    undefined,
+    { role: 'upgrader' } );
 ```
 
 
