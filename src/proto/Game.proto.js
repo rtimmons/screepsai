@@ -1,4 +1,9 @@
 module.exports = {
+
+  panic() {
+    Memory.panic = true;
+  },
+
   eachCreep(onCreep) {
     var out = [];
     for (var name in Game.creeps) {

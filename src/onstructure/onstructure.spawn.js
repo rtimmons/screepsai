@@ -67,6 +67,10 @@ module.exports = {
 
     var ensure = config.get('ensureCreeps');
 
+    if (Memory.panic) {
+      ensure = config.get('panicCreeps');
+    }
+
     var budget = structure.room.energyAvailable;
 
     ensure.forEach((params) => {

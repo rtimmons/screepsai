@@ -7,6 +7,24 @@ const BASE = {
     '58370345a19b6bfd464d5f97',
   ],
 
+  panicCreeps: [
+    {
+      key: 'l1harvester',
+      atLeast: 2,
+      whenAvailable: 150,
+    },
+    {
+      key: 'l1builder',
+      atLeast: 1,
+      whenAvailable: 150,
+    },
+    {
+      key: 'l1upgrader',
+      atLeast: 1,
+      whenAvailable: 150,
+    },
+  ],
+
   ensureCreeps: [
     {
       key: 'l4harvester',

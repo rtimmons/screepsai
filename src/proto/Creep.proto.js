@@ -221,7 +221,7 @@ module.exports = {
       s.energy < s.energyCapacity / 2 && (
         _.size(Memory.targetingId(s.id)) == 0)
     );
-    if (tower) {
+    if (tower && !(Memory.panic)) {
       return tower;
     }
 
