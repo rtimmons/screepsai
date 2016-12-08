@@ -34,6 +34,7 @@ Best viewed using [FoldingText](http://www.foldingtext.com/).
 	- Keep track of frequently-trodden unpaved roads
 
 - Prioritize actions
+	- Builder role: If controller needs upgrading (timer below 95%?), then builders do upgrading. Eliminates need to have distinct upgraders when in panic mode.
 	- If harvesting and won't be energy for > N ticks, advance state
 	- If no active energy, move to closest energy source
 	- Prioritize refilling towers unless need harvesters or upgraders then spawns
