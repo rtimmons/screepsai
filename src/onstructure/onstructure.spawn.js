@@ -53,8 +53,8 @@ module.exports = {
     if (_.isString(newName)) {
       console.log('Spawned ' + type.role + ': ' + newName);
 
-      // TODO: subtract by actual cost
-      budget -= params.whenAvailable;
+      // Can only spawn one creep
+      return 0;
     }
 
     return budget;
