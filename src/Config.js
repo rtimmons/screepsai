@@ -23,6 +23,16 @@ const BASE = {
       atLeast: 1,
       whenAvailable: 150,
     },
+    {
+      key: 'l2harvester',
+      atLeast: 2,
+      whenAvailable: 150,
+    },
+    {
+      key: 'l2builder',
+      atLeast: 2,
+      whenAvailable: 150,
+    },
   ],
 
   ensureCreeps: [
