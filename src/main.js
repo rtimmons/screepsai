@@ -8,6 +8,7 @@ var gameProto   = require('Game.proto');
 
 var onTicks = [
   require('ontick.clearMemory'),
+  require('ontick.panic'),
 ];
 
 var onCreeps = [
